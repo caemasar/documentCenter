@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 指定校验配置文件的DTD信息 -->
+ <!DOCTYPE validators PUBLIC
+  "-//Apache Struts//XWork Validator 1.0.3//EN" 
+ "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<!-- 校验文件的根元素 -->
+<validators>
+	<validator type="requiredstring">
+		<param name="fieldName">user</param>
+		<message>用户名必须输入</message>
+	</validator>
+	<validator type="requiredstring">
+		<param name="fieldName">password</param>
+		<message>密码必须输入</message>
+	</validator>
+	<validator type="requiredstring">
+		<param name="fieldName">validationCode</param>
+		<message>验证码必须输入</message>
+	</validator>
+
+</validators>

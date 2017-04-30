@@ -5,13 +5,16 @@
 	id="WebApp_ID" version="3.1">
 	<display-name>documentCenter</display-name>
 	<!-- spring 和 Hibernate的配置文件 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>  
-             classpath:spring.xml  
-             classpath:spring-hibernate.xml  
+             classpath:applicationContext.xml
         </param-value>
 	</context-param>
+
 
 	<!-- 编码设置 -->
 	<filter>
@@ -31,6 +34,28 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+
+	<context-param>
+		<param-name>root</param-name>
+		<param-value>e:\netdisk\</param-value>
+	</context-param>
+
+	<!-- 防止spring内存溢出监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	<!-- Struts2 filter -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>
+			org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<!-- openSessionInView配置 作用是延迟session关闭到view层 -->
 	<filter>
 		<filter-name>openSessionInViewFilter</filter-name>
@@ -41,29 +66,6 @@
 		</init-param>
 	</filter>
 
-	<!-- 监听servletContext，启动contextConfigLocation中的spring配置信息 -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-
-	<!-- 防止spring内存溢出监听器 -->
-	<listener>
-		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-	</listener>
-
-	<!-- Struts2 filter -->
-
-	<filter>
-		<filter-name>struts2</filter-name>
-		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>struts2</filter-name>
-		<url-pattern>*.action</url-pattern>
-	</filter-mapping>
-
-
 	<filter-mapping>
 		<filter-name>openSessionInViewFilter</filter-name>
 		<url-pattern>*.action</url-pattern>
@@ -73,8 +75,7 @@
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
-
 	<welcome-file-list>
-		<welcome-file>/index.jsp</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-</web-app>
+</web-app> 
