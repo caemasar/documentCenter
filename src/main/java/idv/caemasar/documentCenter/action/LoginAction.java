@@ -33,7 +33,7 @@ public class LoginAction extends BaseAction implements ModelDriven<User>
 				this.addFieldError("validationCode", "验证码输入错误!");
 			}
 		}
-		clearFieldErrors();
+//		clearFieldErrors();
 	}
 
 	public String execute() throws Exception
@@ -51,6 +51,8 @@ public class LoginAction extends BaseAction implements ModelDriven<User>
 				session.setMaxInactiveInterval(60 * 60 * 3);
 				System.out.println("3-----------------------------");
  			    return SUCCESS;
+			}else{
+				this.addFieldError("password", "账户或密码输入错误!");
 			}
 		}
 		catch (Exception e)
