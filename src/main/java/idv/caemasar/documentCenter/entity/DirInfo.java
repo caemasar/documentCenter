@@ -136,4 +136,10 @@ public class DirInfo
 		return dateFormat.format(createTime);
 	}
 
+	@Override
+	public String toString() {
+		return "DirInfo [user=" + user + ", path=" + path + ", parentPath=" + parentPath + ", dir=" + dir
+				+ ", createTime=" + createTime + ", time=" + time + ", count=" + count + ", size=" + size + "]";
+	}
+
 }

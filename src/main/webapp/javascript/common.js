@@ -66,16 +66,20 @@ function sendMsg(url, msg, callbackFun) {
 function addRowToTable(mywindow, id, values) {
    
 	var table = mywindow.document.getElementById(id);
+	var tbody = table.getElementsByTagName("tbody")[0];
 	if (table) {
-		tr = table.insertRow();
+		tr = mywindow.document.createElement("tr"); //新建一个tr类型的Element节点
+		//tr = table.insertRow();
 		
-		tr.style.height = " 20px";
+		//tr.style.height = " 20px";
 		for (var i = 0; i < values.length; i++) {
 			td = tr.insertCell();
 			td.innerHTML = values[i];			
 			td.id = i;
 			if(i == values.length - 1)td.style.textAlign ="right";
 		}		
+		tbody.appendChild(tr); //将节点tr加入tbody中
+		table.appendChild(tbody);
 		return tr;
 	}
 }
@@ -102,13 +106,13 @@ function clearTable(id) {
 	}
 }
 function getPath() {
-	var currentPath = $("txt_path").value;
+	var currentPath = document.getElementById("txt_path").value;
 	console.info("getPath()::"+currentPath);
 	return currentPath;
 }
 function setPath(path) {
-    $("txt_path").value=path;
-	
+    document.getElementById("txt_path").value=path;
+    console.info("$('txt_path').value::"+document.getElementById("txt_path").value);
 	showCurrentPath();
 }
 function showCurrentPath() {
@@ -205,7 +209,8 @@ function createDir() {
 	}
 }
 function dirOnClick(obj) {
-	setPath(obj.id);
+	var id_path = obj.id;
+	setPath(id_path);
 	
 	clearTable("tbl_list");
 	 jsonLoadDirAndFile();
