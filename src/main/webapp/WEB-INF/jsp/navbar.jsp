@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <nav class="navbar navbar-default" role="navigation">
 	<div class="navbar-header">
 
@@ -14,15 +15,31 @@
 
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="#">个人文档</a></li>
+			<c:choose>
+				<c:when test="${choosestr == 'main'}">
+					<li class="active"><a href="main_page.action">个人文档</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="main_page.action">个人文档</a></li>
+				</c:otherwise>
+			</c:choose>
 			<li><a href="#">部门文档</a></li>
+			<c:choose>
+				<c:when test="${choosestr == 'register'}">
+					<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">人员管理<strong
+							class="caret"></strong></a>
+				</c:when>
+				<c:otherwise>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">人员管理<strong class="caret"></strong></a>
+				</c:otherwise>
+			</c:choose>
 
-			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">人员管理<strong class="caret"></strong></a>
-				<ul class="dropdown-menu">
-					<li><a href="#">查看部门构成</a></li>
-					<li class="divider"></li>
-					<li><a href="register_page.action">添加新成员</a></li>
-				</ul></li>
+			<ul class="dropdown-menu">
+				<li><a href="#">查看部门构成</a></li>
+				<li class="divider"></li>
+				<li><a href="register_page.action">添加新成员</a></li>
+			</ul>
+			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<form class="navbar-form navbar-left" role="search">

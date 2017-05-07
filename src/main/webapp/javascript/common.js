@@ -1,9 +1,9 @@
-
-String.prototype.lenB = function () {
+String.prototype.lenB = function() {
 	return this.replace(/[^\x00-\xff]/g, "##").length;
 };
 function show_modal_dialog(url, params, width, height) {
-	return window.showModalDialog(url, params, "dialogWidth:" + width + ";dialogHeight:" + height);
+	return window.showModalDialog(url, params, "dialogWidth:" + width
+			+ ";dialogHeight:" + height);
 }
 
 function getEN(fn) {
@@ -20,16 +20,16 @@ function modalWin(url) {
 	var winheight = 250;
 	var win = (h - winheight) / 2;
 	var winleft = (w - winwidth) / 2;
-	var winSub = null; 
-	winSub = window.open(url, "write", "top=" + win + ",left=" + winleft + ",width=580px,height=250px,modal=yes");
-	window.onfocus = function () {
+	var winSub = null;
+	winSub = window.open(url, "write", "top=" + win + ",left=" + winleft
+			+ ",width=580px,height=250px,modal=yes");
+	window.onfocus = function() {
 		winSub.focus();
 	};
-	window.onclick = function () {
+	window.onclick = function() {
 		winSub.focus();
 	};
 }
-
 
 function getXMLHTTPRequest() {
 	var myRequest = null;
@@ -41,44 +41,42 @@ function sendMsg(url, msg, callbackFun) {
 	try {
 		var myRequest = getXMLHTTPRequest();
 		if (myRequest) {
-			myRequest.onreadystatechange = function () {
-				if (myRequest.readyState == 4) {  
-				    try
-				    {				   
-					    eval(myRequest.responseText);					
-				    }
-				    catch(e)
-				    {				
-				    }
- 				    callbackFun();
-			    }
-		    };
-		    myRequest.open("POST", url, true);
-		    myRequest.setRequestHeader("Content-Length", msg.lenB());
-		    myRequest.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-		    myRequest.send(msg);
-	    }
-	}
-	catch (e) {
+			myRequest.onreadystatechange = function() {
+				if (myRequest.readyState == 4) {
+					try {
+						eval(myRequest.responseText);
+					} catch (e) {
+					}
+					callbackFun();
+				}
+			};
+			myRequest.open("POST", url, true);
+			myRequest.setRequestHeader("Content-Length", msg.lenB());
+			myRequest.setRequestHeader("content-type",
+					"application/x-www-form-urlencoded");
+			myRequest.send(msg);
+		}
+	} catch (e) {
 		alert(e);
 	}
 }
 function addRowToTable(mywindow, id, values) {
-   
+
 	var table = mywindow.document.getElementById(id);
 	var tbody = table.getElementsByTagName("tbody")[0];
 	if (table) {
-		tr = mywindow.document.createElement("tr"); //新建一个tr类型的Element节点
-		//tr = table.insertRow();
-		
-		//tr.style.height = " 20px";
+		tr = mywindow.document.createElement("tr"); // 新建一个tr类型的Element节点
+		// tr = table.insertRow();
+
+		// tr.style.height = " 20px";
 		for (var i = 0; i < values.length; i++) {
 			td = tr.insertCell();
-			td.innerHTML = values[i];			
+			td.innerHTML = values[i];
 			td.id = i;
-			if(i == values.length - 1)td.style.textAlign ="right";
-		}		
-		tbody.appendChild(tr); //将节点tr加入tbody中
+			if (i == values.length - 1)
+				td.style.textAlign = "right";
+		}
+		tbody.appendChild(tr); // 将节点tr加入tbody中
 		table.appendChild(tbody);
 		return tr;
 	}
@@ -86,11 +84,11 @@ function addRowToTable(mywindow, id, values) {
 function deleteRowFromTable(id, index) {
 	var table = document.getElementById(id);
 	if (table) {
-		table.deleteRow(index);		
+		table.deleteRow(index);
 		var checkbox = document.getElementById("checkbox_head");
-		if(checkbox)
-		    checkbox.checked = false;
-		
+		if (checkbox)
+			checkbox.checked = false;
+
 	}
 }
 function clearTable(id) {
@@ -107,188 +105,189 @@ function clearTable(id) {
 }
 function getPath() {
 	var currentPath = document.getElementById("txt_path").value;
-	console.info("getPath()::"+currentPath);
+	console.info("getPath()::" + currentPath);
 	return currentPath;
 }
 function setPath(path) {
-    document.getElementById("txt_path").value=path;
-    console.info("$('txt_path').value::"+document.getElementById("txt_path").value);
+	document.getElementById("txt_path").value = path;
+	console.info("$('txt_path').value::"
+			+ document.getElementById("txt_path").value);
 	showCurrentPath();
 }
 function showCurrentPath() {
 	var divCurrentPath = document.getElementById("div_current_path");
-	
+
 	if (divCurrentPath) {
-	
+
 		divCurrentPath.innerHTML = "\u5f53\u524d\u8def\u5f84\uff1a" + getPath();
 
 	}
 }
 function refreshDirList() {
 	if (result.error == "") {
-		addRowToTable("tbl_list", new Array(packageDir(result), result.time, getFormatSize(result.size)));
+		addRowToTable("tbl_list", new Array(packageDir(result), result.time,
+				getFormatSize(result.size)));
 	} else {
 		alert(result.error);
 	}
 }
 
-   function jsonLoadDirAndFile()
-    {    	
-        var url = 'dir.action';        
-        var myAjax = new Ajax.Request(
-        url,
-        {
-            method:'post',
-            parameters:'parentPath=' + getPath(),
-            onComplete: processLoadDirAndFile,
-            asynchronous:false
-        });
-    }
-    function processLoadDirAndFile(request)
-    {      
-    
-       var obj = request.responseText.evalJSON();            
-       loadList(obj.dirInfo);
-    }    
+function jsonLoadDirAndFile() {
+	var url = 'dir.action';
+	var myAjax = new Ajax.Request(url, {
+		method : 'post',
+		parameters : 'parentPath=' + getPath(),
+		onComplete : processLoadDirAndFile,
+		asynchronous : false
+	});
+}
+function processLoadDirAndFile(request) {
 
+	var obj = request.responseText.evalJSON();
+	loadList(obj.dirInfo);
+}
 
+function showCreateDirDialog() {
+	var obj = new Object();
+	obj.path = getPath();
+	obj.window = window;
+	show_modal_dialog("create_dir_page.action", obj, 500, 200);
+}
+function jsonCreateDir() {
 
+	
+	var url = 'createDir.action';
 
-    function showCreateDirDialog()
-    {
-        var obj = new Object();
-        obj.path = getPath();
-        obj.window = window;
-        show_modal_dialog("create_dir_page.action", obj, 20, 11);
-    }
-    function jsonCreateDir()
-    {
-    	
-      
-        var url = 'createDir.action';
+	var params = $(document.getElementById('form_dir')).serialize();
 
-        var params = Form.serialize('div');
- 
-        var myAjax = new Ajax.Request(
-        url,
-        {
+	var myAjax = new Ajax.Request(url, {
 
-            method:'post',
-     
-            parameters:params,
-   
-            onComplete: processResponse,
- 
-            asynchronous:true
-        });
-    }
+		method : 'post',
 
-    function processResponse(request)
-    {      
-    
-       var obj = request.responseText.evalJSON();
-       //alert(obj.result);
-       if(obj.name == undefined)
-           return;
-       addRowToTable(parentWindow, "tbl_list", new Array(packageDir(obj), obj.time, getFormatSize(obj.size)));
-       
-       window.close();
-    }    
+		parameters : params,
 
+		onComplete : processResponse,
 
-///////////////////////////
+		asynchronous : true
+	});
+}
+
+function processResponse(request) {
+
+	var obj = request.responseText.evalJSON();
+	// alert(obj.result);
+	if (obj.name == undefined)
+		return;
+	addRowToTable(parentWindow, "tbl_list", new Array(packageDir(obj),
+			obj.time, getFormatSize(obj.size)));
+
+	window.close();
+}
+
+// /////////////////////////
 
 function createDir() {
 	var dir = show_modal_dialog("create_dir_page.action", getPath(), 20, 11);
-	
-	if (dir != undefined) {  
+
+	if (dir != undefined) {
 		path = getPath() + dir;
-		var msg = "path=" + encodeURI(encodeURI(path)) + "/&dir=" + encodeURI(encodeURI(dir)) + "&parent_path=" + encodeURI(encodeURI(getPath()));
-	//alert(msg);		
-		//sendMsg("create_dir.do?create", msg, refreshDirList);
+		var msg = "path=" + encodeURI(encodeURI(path)) + "/&dir="
+				+ encodeURI(encodeURI(dir)) + "&parent_path="
+				+ encodeURI(encodeURI(getPath()));
+		// alert(msg);
+		// sendMsg("create_dir.do?create", msg, refreshDirList);
 	}
 }
 function dirOnClick(obj) {
 	var id_path = obj.id;
 	setPath(id_path);
-	
+
 	clearTable("tbl_list");
-	 jsonLoadDirAndFile();
+	jsonLoadDirAndFile();
 }
 function packageDir(obj) {
 	var html = "";
-	html = "<input type='checkbox' flag = 'dir' entity='" + obj.name + "'  id='" + obj.path + "' name='checkbox'/>&nbsp;&nbsp;<a href='javascript:' id = '" + obj.path + "' onclick='dirOnClick(this)'><img src='images/folder.gif'/>&nbsp" + obj.name + "&nbsp(" + obj.count + ")</a><br/>";
+	html = "<input type='checkbox' flag = 'dir' entity='"
+			+ obj.name
+			+ "'  id='"
+			+ obj.path
+			+ "' name='checkbox'/>&nbsp;&nbsp;<a href='javascript:' id = '"
+			+ obj.path
+			+ "' onclick='dirOnClick(this)'><img src='images/folder.gif'/>&nbsp"
+			+ obj.name + "&nbsp(" + obj.count + ")</a><br/>";
 	return html;
 }
-/*function loadList() {
-	for (var i = 0; i < result.length; i++) {
-		addRowToTable("tbl_list", new Array(packageDir(result[i]), result[i].time, getFormatSize(result[i].size)));
-	}
-	sendMsg("get_file.do", "path=" + encode(getPath()), loadfiles);
-}*/
+/*
+ * function loadList() { for (var i = 0; i < result.length; i++) {
+ * addRowToTable("tbl_list", new Array(packageDir(result[i]), result[i].time,
+ * getFormatSize(result[i].size))); } sendMsg("get_file.do", "path=" +
+ * encode(getPath()), loadfiles); }
+ */
 
+function jsonLoadFile() {
+	var url = 'file.action';
+	var myAjax = new Ajax.Request(url, {
+		method : 'post',
+		parameters : 'path=' + getPath(),
+		onComplete : processLoadFile,
+		asynchronous : false
+	});
+}
+function processLoadFile(request) {
 
-   function jsonLoadFile()
-    {    	
-        var url = 'file.action';        
-        var myAjax = new Ajax.Request(
-        url,
-        {
-            method:'post',
-            parameters:'path=' + getPath(),
-            onComplete: processLoadFile,
-            asynchronous:false
-        });
-    }
-    function processLoadFile(request)
-    {      
+	var obj = request.responseText.evalJSON();
+	loadfiles(obj.files);
+}
 
-       var obj = request.responseText.evalJSON();            
-       loadfiles(obj.files);
-    } 
-
-function loadList(obj) { 
+function loadList(obj) {
 	for (var i = 0; i < obj.length; i++) {
-		addRowToTable(window, "tbl_list", new Array(packageDir(obj[i]), obj[i].time, getFormatSize(obj[i].size)));
+		addRowToTable(window, "tbl_list", new Array(packageDir(obj[i]),
+				obj[i].time, getFormatSize(obj[i].size)));
 	}
 	jsonLoadFile();
 }
 function toPrevious() {
-	   
+
 	var currentPath = getPath();
-	console.info("previous()::"+currentPath);
+	console.info("previous()::" + currentPath);
 	if (currentPath != "/") {
-		setPath(currentPath.substr(0, currentPath.lastIndexOf("/", currentPath.length - 2) + 1));
+		setPath(currentPath.substr(0, currentPath.lastIndexOf("/",
+				currentPath.length - 2) + 1));
 		clearTable("tbl_list");
-		 jsonLoadDirAndFile();
+		jsonLoadDirAndFile();
 	}
 }
 function fileOnClick(obj) {
 	var frame = document.getElementById("downloadFrame");
-	var url = encode("downloadFile.action?path=" + getPath() + "&name=" + obj.id);
+	var url = encode("downloadFile.action?path=" + getPath() + "&name="
+			+ obj.id);
 	frame.src = url;
 }
 function packageFile(obj) {
 	var html = "";
-	html = "<input type='checkbox'  flag = 'file' entity = '" + obj.name + "'  id='" + obj.name + "' name='checkbox'/>&nbsp;&nbsp;<a href='javascript:' id = '" + obj.name + "' onclick='fileOnClick(this)'>";
+	html = "<input type='checkbox'  flag = 'file' entity = '" + obj.name
+			+ "'  id='" + obj.name
+			+ "' name='checkbox'/>&nbsp;&nbsp;<a href='javascript:' id = '"
+			+ obj.name + "' onclick='fileOnClick(this)'>";
 	switch (getEN(obj.name)) {
-	  case "zip":
-	  case "rar":
+	case "zip":
+	case "rar":
 		html += "<img src='images/zip.gif'/>&nbsp";
-		break; 
-	  case "txt":
+		break;
+	case "txt":
 		html += "<img src='images/txt.gif'/>&nbsp";
 		break;
-	  default:
+	default:
 		html += "<img src='images/unknown.gif'/>&nbsp";
 	}
-	
+
 	html += obj.name + "</a><br/>";
 	return html;
 }
 function loadfiles(obj) {
 	for (var i = 0; i < obj.length; i++) {
-		addRowToTable(window,"tbl_list", new Array(packageFile(obj[i]), obj[i].time, getFormatSize(obj[i].size))); 
+		addRowToTable(window, "tbl_list", new Array(packageFile(obj[i]),
+				obj[i].time, getFormatSize(obj[i].size)));
 	}
 }
 
@@ -299,20 +298,21 @@ function goUpload() {
 }
 function goMain() {
 
-
 	uploadForm.action = ".";
 	uploadForm.submit();
 }
-function addInputFile() {  
- 	var childnum = document.getElementById("files").getElementsByTagName("input").length;	//��ȡ�ϴ����Ƹ���    
-	var uploadHTML = document.createElement("<input type='file' id='inputfile' name='file[" + childnum + "]'/>");
+function addInputFile() {
+	var childnum = document.getElementById("files").getElementsByTagName(
+			"input").length; // ��ȡ�ϴ����Ƹ���
+	var uploadHTML = document
+			.createElement("<input type='file' id='inputfile' name='file["
+					+ childnum + "]'/>");
 	document.getElementById("files").appendChild(uploadHTML);
 	uploadHTML = document.createElement("<p/>");
 	document.getElementById("files").appendChild(uploadHTML);
-} 
+}
 
 function checkAll(obj) {
-
 
 	var checkboxList = document.getElementsByName("checkbox");
 	for (var i = 0; i < checkboxList.length; i++) {
@@ -329,7 +329,7 @@ function downloadMoreFile() {
 		for (var i = 0; i < checkboxList.length; i++) {
 			if (checkboxList[i].checked) {
 				s += checkboxList[i].entity + ";";
-				index = i; 
+				index = i;
 				count++;
 			}
 		}
@@ -340,17 +340,20 @@ function downloadMoreFile() {
 				return;
 			} else {
 				if (count == 1 && checkboxList[index].flag == "file") {
-					var url = encode("downloadFile.action?path=" + getPath() + "&name=" + s.substr(0, s.length - 1));
+					var url = encode("downloadFile.action?path=" + getPath()
+							+ "&name=" + s.substr(0, s.length - 1));
 				} else {
 					if (count == 1 && checkboxList[index].flag == "dir") {
-						var url = encode("downloadMoreFile.action?path=" + getPath() + s.substr(0, s.length - 1) + "/&names=");
+						var url = encode("downloadMoreFile.action?path="
+								+ getPath() + s.substr(0, s.length - 1)
+								+ "/&names=");
 					} else {
-						var url = encode("downloadMoreFile.action?path=" + getPath() + "&names=" + s);
+						var url = encode("downloadMoreFile.action?path="
+								+ getPath() + "&names=" + s);
 					}
 				}
 			}
-		}
-		catch (e) {
+		} catch (e) {
 			alert(e);
 		}
 		frame.src = url;
@@ -369,83 +372,72 @@ function doDeletePath() {
 	}
 }
 function deletePath() {
-	var checkboxList = document.getElementsByName("checkbox");		
+	var checkboxList = document.getElementsByName("checkbox");
 	if (checkboxList) {
 		var currentPath = getPath();
 		var paths = "";
 		for (var i = 0; i < checkboxList.length; i++) {
 			if (checkboxList[i].checked) {
-				console.info("checkboxList[i].flag::"+checkboxList[i].getAttribute("flag"));
+				console.info("checkboxList[i].flag::"
+						+ checkboxList[i].getAttribute("flag"));
 				if (checkboxList[i].getAttribute("flag") == "dir") {
-					paths += currentPath + checkboxList[i].getAttribute("entity") + "/;";
+					paths += currentPath
+							+ checkboxList[i].getAttribute("entity") + "/;";
 				} else {
-					paths += currentPath + checkboxList[i].getAttribute("entity") + ";";
+					paths += currentPath
+							+ checkboxList[i].getAttribute("entity") + ";";
 				}
 			}
 		}
-	    if(paths.length == 0)
-	    {
-	        alert("请选择要删除的目录和文件!");
-	        return; 
-	    }
-	    else
-	    {
-	        if(window.confirm("是否真的想删除这些目录和文件?"))
-	        {	        		    
-		        jsonDeletePath(paths);
-		    }
+		if (paths.length == 0) {
+			alert("请选择要删除的目录和文件!");
+			return;
+		} else {
+			if (window.confirm("是否真的想删除这些目录和文件?")) {
+				jsonDeletePath(paths);
+			}
 		}
-	}	
+	}
 }
 
-    function jsonDeletePath(paths)
-    {
-    	      
-        var url = 'delete.action';
+function jsonDeletePath(paths) {
 
-        var myAjax = new Ajax.Request(
-        url,
-        {
-            method:'post',
-     
-            parameters:"paths=" + paths,
-   
-            onComplete: doDeletePath,
- 
-            asynchronous:true
-        });
-    }
+	var url = 'delete.action';
 
-function getFormatSize(size)
-{      
-    if(size < 1024 * 1024)
-        return (size / 1024).toFixed(2) + "K"; 
-    else
-        return (size / (1024 * 1024)).toFixed(2) + "M"; 
+	var myAjax = new Ajax.Request(url, {
+		method : 'post',
+
+		parameters : "paths=" + paths,
+
+		onComplete : doDeletePath,
+
+		asynchronous : true
+	});
 }
-function doUsedSize(request)
-{   
-    var obj = request.responseText.evalJSON();                   
-    alert("已经使用了" + getFormatSize(obj.usedSize));
-}
-function jsonUsedSize()
-{    	      
-    var url = 'disk.action';
-    var myAjax = new Ajax.Request(
-    url,
-       {
-          method:'post',     
-          onComplete: doUsedSize,
-          asynchronous:true
-      });
-    }
 
-function getUsedSize()
-{
+function getFormatSize(size) {
+	if (size < 1024 * 1024)
+		return (size / 1024).toFixed(2) + "K";
+	else
+		return (size / (1024 * 1024)).toFixed(2) + "M";
+}
+function doUsedSize(request) {
+	var obj = request.responseText.evalJSON();
+	alert("已经使用了" + getFormatSize(obj.usedSize));
+}
+function jsonUsedSize() {
+	var url = 'disk.action';
+	var myAjax = new Ajax.Request(url, {
+		method : 'post',
+		onComplete : doUsedSize,
+		asynchronous : true
+	});
+}
+
+function getUsedSize() {
 	jsonUsedSize();
-	
+
 }
-function relogin()
-{
-    document.location = "relogin.action"
-} 
+function relogin() {
+	document.location = "relogin.action"
+}

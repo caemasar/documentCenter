@@ -26,6 +26,7 @@
     <![endif]-->
 </head>
 <body>
+<c:set var="choosestr" value="main" scope="page"/>
 	<form action="upload_page.action" method="post" name="uploadForm">
 		<input type="hidden" value="" name="uploadPath" />
 	</form>
@@ -33,7 +34,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<%@include file="navbar.jsp" %>
+				<%@include file="navbar.jsp"%>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="row">
