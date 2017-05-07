@@ -41,15 +41,12 @@ public class LoginAction extends BaseAction implements ModelDriven<User>
 		try
 		{
 			UserService userService = serviceManager.getUserService();
-			System.out.println("1-----------------------------");
 			if(userService.verifyUser(user))
 			{
-				System.out.println("2-----------------------------");
 				saveCookie("user", user.getUser(), 24 * 60 * 60);
 				HttpSession session = request.getSession();
 				session.setAttribute("username", user.getUser());
 				session.setMaxInactiveInterval(60 * 60 * 3);
-				System.out.println("3-----------------------------");
  			    return SUCCESS;
 			}else{
 				this.addFieldError("password", "账户或密码输入错误!");
@@ -57,7 +54,7 @@ public class LoginAction extends BaseAction implements ModelDriven<User>
 		}
 		catch (Exception e)
 		{
-			System.out.println("e-----------------------------");
+			e.printStackTrace();
 		}
 		return ERROR;
 	}

@@ -59,7 +59,7 @@
 								<center>
 									<FONT color="red"><s:fielderror /></FONT>
 								</center>
-								<form role="form" action="login.action" id="subform">
+								<form role="form" action="login.action" id="subform" method="post">
 
 									<div class="form-group">
 

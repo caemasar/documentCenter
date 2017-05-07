@@ -29,6 +29,7 @@
 		<action name="register"
 			class="idv.caemasar.documentCenter.action.RegisterAction">
 			<result name="success">/WEB-INF/jsp/result.jsp</result>
+			<result name="error">/WEB-INF/jsp/result.jsp</result>
 			<result name="input">/WEB-INF/jsp/register.jsp</result>
 		</action>
 		<action name="login" class="idv.caemasar.documentCenter.action.LoginAction">

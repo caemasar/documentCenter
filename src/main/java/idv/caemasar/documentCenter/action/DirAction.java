@@ -44,7 +44,6 @@ public class DirAction extends BaseAction implements ModelDriven<UserInfo>
 					.getDirectoryService();
 			dirInfo = directoryService.getDirInfo(userInfo.getCookieUser(),
 					userInfo.getParentPath());
-			System.out.println(dirInfo);
 			return SUCCESS;
 		}
 		catch (Exception e)
