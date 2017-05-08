@@ -30,7 +30,7 @@
 </script>
 </head>
 <body>
-<c:set var="choosestr" value="register" scope="page"/>
+	<c:set var="choosestr" value="register" scope="page" />
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
@@ -43,13 +43,13 @@
 								<form role="form" action="register.action" method="post">
 									<div class="form-group">
 
-										<label for="user"> 用户名 </label> <input type="text" class="form-control" id="user" name="user" required="true"
-											value="" placeholder="请输入新用户名" />
+										<label for="u_username"> 用户名 </label> <input type="text" class="form-control" id="u_username"
+											name="u_username" required="true" value="" placeholder="请输入新用户名" />
 									</div>
 									<div class="form-group">
 
-										<label for="password"> 密码 </label> <input type="password" class="form-control" id="password" name="password"
-											required="true" placeholder="请输入新用户密码" />
+										<label for="u_password"> 密码 </label> <input type="password" class="form-control" id="u_password"
+											name="u_password" required="true" placeholder="请输入新用户密码" />
 									</div>
 									<div class="form-group">
 
@@ -58,23 +58,30 @@
 									</div>
 									<div class="form-group">
 
-										<label for="xm"> 姓名 </label> <input type="text" class="form-control" id="xm" name="xm" value=""
-											placeholder="请输入新用户真实姓名" />
+										<label for="u_realname"> 姓名 </label> <input type="text" class="form-control" id="u_realname" name="u_realname"
+											value="" placeholder="请输入新用户真实姓名" />
 									</div>
 									<div class="form-group">
 
-										<label for="email"> 邮箱地址 </label> <input type="text" class="form-control" id="email" name="email" value=""
-											placeholder="请输入新用户邮箱地址" />
+										<label for="u_email"> 邮箱地址 </label> <input type="email" class="form-control" id="u_email" name="u_email"
+											value="" placeholder="请输入新用户邮箱地址" />
 									</div>
 									<div class="form-group">
 
-										<label for="phone"> 电话 </label> <input type="text" class="form-control" id="phone" name="phone"
+										<label for="u_phone"> 电话 </label> <input type="text" class="form-control" id="u_phone" name="u_phone"
 											placeholder="请输入新用户电话" />
 									</div>
 									<div class="form-group">
 
-										<label for="qq"> QQ </label> <input type="text" class="form-control" id="qq" name="qq" value=""
-											placeholder="请输入新用户QQ" />
+										<label for="u_deptid">部门编号</label> <input type="text" class="form-control" id="u_deptid" name="u_deptid"
+											value="" placeholder="请输入新用户部门编号" />
+									</div>
+									<div class="form-group">
+
+										<label for="u_identity">是否为管理人员</label> <select class="form-control" id="u_identity" name="u_identity">
+											<option value="1">是</option>
+											<option value="0">否</option>
+										</select>
 									</div>
 									<div class="form-group">
 
