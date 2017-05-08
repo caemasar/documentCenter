@@ -6,11 +6,11 @@
 <!-- 校验文件的根元素 -->
 <validators>
 	<validator type="requiredstring">
-		<param name="fieldName">user</param>
+		<param name="fieldName">u_username</param>
 		<message>用户名必须输入</message>
 	</validator>
 	<validator type="requiredstring">
-		<param name="fieldName">password</param>
+		<param name="fieldName">u_password</param>
 		<message>密码必须输入</message>
 	</validator>
 	<validator type="requiredstring">

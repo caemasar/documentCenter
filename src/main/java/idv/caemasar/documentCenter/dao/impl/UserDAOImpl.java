@@ -17,10 +17,10 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO
 	
 	public String getPasswordMD5(User user)
 	{
-		String hql = "select passwordMD5 from User where user = ?";
+		String hql = "select u_password from User where u_username = ?";
 
 		@SuppressWarnings("unchecked")
-		java.util.List<String> passwordMD5 = (List<String>) this.getHibernateTemplate().find(hql, user.getUser());
+		java.util.List<String> passwordMD5 = (List<String>) this.getHibernateTemplate().find(hql, user.getU_username());
 		
 		if(passwordMD5.size() > 0)
 			return passwordMD5.get(0);

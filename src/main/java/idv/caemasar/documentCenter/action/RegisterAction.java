@@ -37,11 +37,11 @@ public class RegisterAction extends BaseAction implements ModelDriven<User> {
 
 			userService.addUser(user);
 
-			File dir = new File(userInfo.getRoot() + user.getUser());
+			File dir = new File(userInfo.getRoot() + user.getU_username());
 
 			if (!dir.exists())
 				dir.mkdir();
-			result = "<" + user.getUser() + ">注册成功！";
+			result = "<" + user.getU_username() + ">注册成功！";
 			return SUCCESS;
 		} catch (Exception e) {
 			result = e.getMessage();

@@ -63,13 +63,13 @@
 
 									<div class="form-group">
 
-										<label for="user"> 用户名 </label> <input type="text" class="form-control" id="user" placeholder="请输入用户名"
-											name="user" />
+										<label for="u_username"> 用户名 </label> <input type="text" class="form-control" id="u_username"
+											placeholder="请输入用户名" name="u_username" />
 									</div>
 									<div class="form-group">
 
-										<label for="password"> 密码 </label> <input type="password" class="form-control" id="password"
-											placeholder="请输入密码" name="password" />
+										<label for="u_password"> 密码 </label> <input type="password" class="form-control" id="u_password"
+											placeholder="请输入密码" name="u_password" />
 									</div>
 									<div class="form-group">
 

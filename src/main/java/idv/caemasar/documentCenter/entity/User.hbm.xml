@@ -3,13 +3,15 @@
 "-//Hibernate/Hibernate Mapping DTD//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="idv.caemasar.documentCenter.entity.User" table="t_users">
-		<id name="user" column="user"/>
-		<property name="passwordMD5" column="password_md5"  />
-		<property name="xm" column="xm"  />
-		<property name="email" column="email"  />
-		<property name="phone" column="phone"  />
-		<property name="qq" column="qq"  />		
+	<class name="idv.caemasar.documentCenter.entity.User" table="dc_t_users">
+		<id name="u_id" column="u_id" />
+		<property name="u_username" column="u_username" />
+		<property name="u_password" column="u_password" />
+		<property name="u_realname" column="u_realname" />
+		<property name="u_email" column="u_email" />
+		<property name="u_phone" column="u_phone" />
+		<property name="u_deptid" column="u_deptid" />
+		<property name="u_identity" column="u_identity" />
 	</class>
 </hibernate-mapping>
  
