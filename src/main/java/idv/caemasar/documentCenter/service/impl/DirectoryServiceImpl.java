@@ -25,12 +25,10 @@ public class DirectoryServiceImpl implements DirectoryService
 
 	public String addDirectory(UserInfo userInfo) throws Exception
 	{
-
 		String currentPath = userInfo.getUserRoot() + userInfo.getParentPath()
 				+ userInfo.getDir() + File.separator;
 		currentPath = File.separator.equals("\\") ? currentPath.replaceAll("/",
 				"\\\\") : currentPath;
-
 		Directory directory = new Directory();
 		directory.setDir_userid(Integer.parseInt(userInfo.getUid()));
 		directory.setDir_directory(userInfo.getDir());
@@ -38,7 +36,6 @@ public class DirectoryServiceImpl implements DirectoryService
 		directory.setDir_path(userInfo.getParentPath() + userInfo.getDir() + "/");
 		Date date = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		
 		userInfo.setTime(dateFormat.format(date));
  
 		directory.setDir_creat_time(date);

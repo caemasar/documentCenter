@@ -18,7 +18,7 @@ public class CreateDirAction extends BaseAction implements
 		{
 			DirectoryService directoryService = serviceManager
 					.getDirectoryService();
-			System.out.println(userInfo);
+			userInfo.setUid(getCookieValue("u_id"));
 			setResult(directoryService.addDirectory(userInfo));
 			return SUCCESS;
 		}

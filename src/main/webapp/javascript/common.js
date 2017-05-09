@@ -140,6 +140,7 @@ function jsonLoadDirAndFile() {
 		onComplete : processLoadDirAndFile,
 		asynchronous : false
 	});
+	
 }
 function processLoadDirAndFile(request) {
 
@@ -170,6 +171,7 @@ function jsonCreateDir() {
 
 		asynchronous : true
 	});
+	window.close();
 }
 
 function processResponse(request) {

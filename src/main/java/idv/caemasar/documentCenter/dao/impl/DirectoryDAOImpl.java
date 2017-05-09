@@ -14,8 +14,8 @@ public class DirectoryDAOImpl extends HibernateDaoSupport implements DirectoryDA
 
 	public void delete(UserInfo userInfo, String path)
 	{			
-		this.getHibernateTemplate().bulkUpdate("delete from Directory where user = ? and path = ?",new Object[]{userInfo.getCookieUser(), path});
-		this.getHibernateTemplate().bulkUpdate("delete from Directory where user=? and parentPath like ?", new Object[]{userInfo.getCookieUser(), path + "%"});
+		this.getHibernateTemplate().bulkUpdate("delete from Directory where dir_userid = ? and dir_path = ?",new Object[]{Integer.parseInt(userInfo.getUid()), path});
+		this.getHibernateTemplate().bulkUpdate("delete from Directory where dir_userid = ? and dir_parent_path like ?", new Object[]{Integer.parseInt(userInfo.getUid()), path + "%"});
 	}
 
 	public void save(Directory directory)
