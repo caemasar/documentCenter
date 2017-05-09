@@ -10,6 +10,14 @@ public class UserInfo
 	private String dir;
 	private String parentPath;
 	private String time;
+	private String uid;
+	
+	public String getUid() {
+		return uid;
+	}
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
 	/**
 	 * time属性的getter方法
 	 */
@@ -103,4 +111,10 @@ public class UserInfo
 				"/", "\\\\") : path);
 		return absolutePath;
 	}
+	@Override
+	public String toString() {
+		return "UserInfo [cookieUser=" + cookieUser + ", root=" + root + ", userRoot=" + userRoot + ", dir=" + dir
+				+ ", parentPath=" + parentPath + ", time=" + time + ", uid=" + uid + "]";
+	}
+	
 }

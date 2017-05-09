@@ -18,6 +18,7 @@ public class CreateDirAction extends BaseAction implements
 		{
 			DirectoryService directoryService = serviceManager
 					.getDirectoryService();
+			System.out.println(userInfo);
 			setResult(directoryService.addDirectory(userInfo));
 			return SUCCESS;
 		}

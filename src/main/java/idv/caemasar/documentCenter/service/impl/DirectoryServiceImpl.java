@@ -32,16 +32,16 @@ public class DirectoryServiceImpl implements DirectoryService
 				"\\\\") : currentPath;
 
 		Directory directory = new Directory();
-		directory.setUser(userInfo.getCookieUser());
-		directory.setDir(userInfo.getDir());
-		directory.setParentPath(userInfo.getParentPath());
-		directory.setPath(userInfo.getParentPath() + userInfo.getDir() + "/");
+		directory.setDir_userid(Integer.parseInt(userInfo.getUid()));
+		directory.setDir_directory(userInfo.getDir());
+		directory.setDir_parent_path(userInfo.getParentPath());
+		directory.setDir_path(userInfo.getParentPath() + userInfo.getDir() + "/");
 		Date date = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		userInfo.setTime(dateFormat.format(date));
  
-		directory.setCreateTime(date);
+		directory.setDir_creat_time(date);
 		directoryDAO.save(directory);
 		File dir = new File(currentPath);
 		if (!dir.exists())
@@ -53,9 +53,9 @@ public class DirectoryServiceImpl implements DirectoryService
 	}
 
 
-	public List<DirInfo> getDirInfo(String user, String parentPath)
+	public List<DirInfo> getDirInfo(String uId, String parentPath)
 	{		
-		return directoryDAO.getDirInfo(user, parentPath);
+		return directoryDAO.getDirInfo(uId, parentPath);
 	}
 	public void deleteDirectory(UserInfo userInfo, String path)
 	{

@@ -31,4 +31,9 @@ public class UserServiceImpl implements UserService {
 		}
 
 	}
+
+	@Override
+	public int getUserID(User user) {
+		return userDAO.getUserID(user);
+	}
 }

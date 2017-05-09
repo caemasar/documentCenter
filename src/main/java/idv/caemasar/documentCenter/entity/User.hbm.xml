@@ -4,7 +4,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="idv.caemasar.documentCenter.entity.User" table="dc_t_users">
-		<id name="u_id" column="u_id" />
+		<id name="u_id" column="u_id" ><generator class="increment" /></id>
 		<property name="u_username" column="u_username" />
 		<property name="u_password" column="u_password" />
 		<property name="u_realname" column="u_realname" />

@@ -3,14 +3,15 @@
 "-//Hibernate/Hibernate Mapping DTD//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="idv.caemasar.documentCenter.entity.File" table="t_files">
-		<id name="id" column="id" type="int">
+	<class name="idv.caemasar.documentCenter.entity.File" table="dc_t_files">
+		<id name="flie_id" column="flie_id" type="int">
 			<generator class="increment" />
 		</id>
-		<property name="user" column="user" />
-		<property name="file" column="file" />
-		<property name="path" column="path" />
-		<property name="size" column="size" />
-		<property name="uploadTime" column="upload_time" />
+		<property name="file_userid" column="file_userid" />
+		<property name="file_filename" column="file_filename" />
+		<property name="file_path" column="file_path" />
+		<property name="file_size" column="file_size" />
+		<property name="file_uploadtime" column="file_uploadtime" />
+		<property name="file_type" column="file_type" />
 	</class> 
 </hibernate-mapping>

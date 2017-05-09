@@ -1,95 +1,77 @@
 package idv.caemasar.documentCenter.entity;
+
 import java.util.Date;
-public class Directory
-{
-    private int id;
-    private String user;
-    private String path;
-    private String parentPath;
-    private String dir;
-    private Date createTime;
-	/**
-	 * id属性的getter方法
-	 */
-	public int getId()
-	{
-		return id;
+
+public class Directory {
+	private int dir_id;
+	private int dir_userid;
+	private String dir_path;
+	private String dir_parent_path;
+	private String dir_directory;
+	private Date dir_creat_time;
+	private int dir_type;
+
+	public int getDir_id() {
+		return dir_id;
 	}
-	/**
-	 * id属性的setter方法
-	 */
-	public void setId(int id)
-	{
-		this.id = id;
+
+	public void setDir_id(int dir_id) {
+		this.dir_id = dir_id;
 	}
-	/**
-	 * user属性的getter方法
-	 */
-	public String getUser()
-	{
-		return user;
+
+	public int getDir_userid() {
+		return dir_userid;
 	}
-	/**
-	 * user属性的setter方法
-	 */
-	public void setUser(String user)
-	{
-		this.user = user;
+
+	public void setDir_userid(int dir_userid) {
+		this.dir_userid = dir_userid;
 	}
-	/**
-	 * path属性的getter方法
-	 */
-	public String getPath()
-	{
-		return path;
+
+	public String getDir_path() {
+		return dir_path;
 	}
-	/**
-	 * path属性的setter方法
-	 */
-	public void setPath(String path)
-	{
-		this.path = path;
+
+	public void setDir_path(String dir_path) {
+		this.dir_path = dir_path;
 	}
-	/**
-	 * parentPath属性的getter方法
-	 */
-	public String getParentPath()
-	{
-		return parentPath;
+
+	public String getDir_parent_path() {
+		return dir_parent_path;
 	}
-	/**
-	 * parentPath属性的setter方法
-	 */
-	public void setParentPath(String parentPath)
-	{
-		this.parentPath = parentPath;
+
+	public void setDir_parent_path(String dir_parent_path) {
+		this.dir_parent_path = dir_parent_path;
 	}
-	/**
-	 * dir属性的getter方法
-	 */
-	public String getDir()
-	{
-		return dir;
+
+	public String getDir_directory() {
+		return dir_directory;
 	}
-	/**
-	 * dir属性的setter方法
-	 */
-	public void setDir(String dir)
-	{
-		this.dir = dir;
+
+	public void setDir_directory(String dir_directory) {
+		this.dir_directory = dir_directory;
 	}
-	/**
-	 * createTime属性的getter方法
-	 */
-	public Date getCreateTime()
-	{
-		return createTime;
+
+	public Date getDir_creat_time() {
+		return dir_creat_time;
 	}
-	/**
-	 * createTime属性的setter方法
-	 */
-	public void setCreateTime(Date createTime)
-	{
-		this.createTime = createTime;
+
+	public void setDir_creat_time(Date dir_creat_time) {
+		this.dir_creat_time = dir_creat_time;
 	}
+
+	public int getDir_type() {
+		return dir_type;
+	}
+
+	public void setDir_type(int dir_type) {
+		this.dir_type = dir_type;
+	}
+
+	@Override
+	public String toString() {
+		return "Directory [dir_id=" + dir_id + ", dir_userid=" + dir_userid + ", dir_path=" + dir_path
+				+ ", dir_parent_path=" + dir_parent_path + ", dir_directory=" + dir_directory + ", dir_creat_time="
+				+ dir_creat_time + ", dir_type=" + dir_type + "]";
+	}
+
 }

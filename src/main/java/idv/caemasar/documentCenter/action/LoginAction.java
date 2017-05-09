@@ -35,7 +35,10 @@ public class LoginAction extends BaseAction implements ModelDriven<User> {
 		try {
 			UserService userService = serviceManager.getUserService();
 			if (userService.verifyUser(user)) {
+				int u_id = userService.getUserID(user);
 				saveCookie("user", user.getU_username(), 24 * 60 * 60);
+				saveCookie("u_id", String.valueOf(u_id), 24 * 60 * 60);
+				userInfo.setUid(String.valueOf(u_id));
 				HttpSession session = request.getSession();
 				session.setAttribute("username", user.getU_username());
 				session.setMaxInactiveInterval(60 * 60 * 3);

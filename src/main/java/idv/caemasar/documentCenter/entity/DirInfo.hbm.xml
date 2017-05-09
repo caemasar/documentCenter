@@ -5,28 +5,28 @@
 <hibernate-mapping>
 
 	<class name="idv.caemasar.documentCenter.entity.DirInfo">
-        <id name="path" column="path" >
+        <id name="dir_path" column="dir_path" >
             <generator class="assigned"/>
         </id>
-		<property name="user" column="user" />
-		<property name="parentPath" column="parent_path" />
-		<property name="dir" column="dir" />
-		<property name="createTime" column="create_time"/>
+		<property name="dir_userid" column="dir_userid" />
+		<property name="dir_parent_path" column="dir_parent_path" />
+		<property name="dir_directory" column="dir_directory" />
+		<property name="dir_creat_time" column="dir_creat_time"/>
 		<property name="count" column="count" />
         <property name="size" column="size" />
 	</class>
 
 	<sql-query callable="true" name="myDirInfo">
 		<return alias="dirInfo" entity-name="idv.caemasar.documentCenter.entity.DirInfo">
-			<return-property name="user" column="user" />
-			<return-property name="path" column="path" />
-			<return-property name="parentPath" column="parent_path" />
-			<return-property name="dir" column="dir" />
-			<return-property name="createTime" column="create_time" />
+			<return-property name="dir_userid" column="dir_userid" />
+			<return-property name="dir_path" column="dir_path" />
+			<return-property name="dir_parent_path" column="dir_parent_path" />
+			<return-property name="dir_directory" column="dir_directory" />
+			<return-property name="dir_creat_time" column="dir_creat_time" />
 			<return-property name="count" column="count" />
 			<return-property name="size" column="size" />
 		</return>
-		{call p_dir_info(:user,:parentPath) }
+		<![CDATA[call p_dir_info(:u_id,:parent_path)]]>
 	</sql-query>
 
 </hibernate-mapping>

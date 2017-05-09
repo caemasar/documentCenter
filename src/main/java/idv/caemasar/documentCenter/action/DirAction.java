@@ -42,7 +42,7 @@ public class DirAction extends BaseAction implements ModelDriven<UserInfo>
 		{
 			DirectoryService directoryService = serviceManager
 					.getDirectoryService();
-			dirInfo = directoryService.getDirInfo(userInfo.getCookieUser(),
+			dirInfo = directoryService.getDirInfo(getCookieValue("u_id"),
 					userInfo.getParentPath());
 			return SUCCESS;
 		}

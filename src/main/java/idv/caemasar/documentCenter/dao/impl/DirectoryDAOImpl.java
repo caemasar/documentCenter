@@ -24,11 +24,12 @@ public class DirectoryDAOImpl extends HibernateDaoSupport implements DirectoryDA
 
 	}
 
-	public List<DirInfo> getDirInfo(String user, String parentPath)
+	public List<DirInfo> getDirInfo(String u_id, String parent_path)
 	{
 
-		List<DirInfo> directories = (List<DirInfo>) this.getHibernateTemplate().findByNamedQueryAndNamedParam("myDirInfo",new String[]{"user", "parentPath"}, new Object[] {
-				user, parentPath });
+		@SuppressWarnings("unchecked")
+		List<DirInfo> directories = (List<DirInfo>) this.getHibernateTemplate().findByNamedQueryAndNamedParam("myDirInfo",new String[]{"u_id", "parent_path"}, new Object[] {
+				u_id, parent_path });
 
 		return directories;
 	}

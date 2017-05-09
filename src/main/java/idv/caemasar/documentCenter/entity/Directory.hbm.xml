@@ -4,15 +4,16 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-	<class name="idv.caemasar.documentCenter.entity.Directory" table="t_directories">
-		<id name="id" column="id" type="int">
+	<class name="idv.caemasar.documentCenter.entity.Directory" table="dc_t_directories">
+		<id name="dir_id" column="dir_id" type="int">
 			<generator class="increment" />
 		</id>
-		<property name="user" column="user" />
-		<property name="path" column="path" />
-		<property name="parentPath" column="parent_path" />
-		<property name="dir" column="dir" />
-		<property name="createTime" column="create_time" />
+		<property name="dir_userid" column="dir_userid" />
+		<property name="dir_path" column="dir_path" />
+		<property name="dir_parent_path" column="dir_parent_path" />
+		<property name="dir_directory" column="dir_directory" />
+		<property name="dir_creat_time" column="dir_creat_time" />
+		<property name="dir_type" column="dir_type"/>
 	</class>
 
 

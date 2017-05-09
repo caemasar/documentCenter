@@ -6,8 +6,8 @@
 
 <s:iterator id="element" value="dirInfo" status="status" >
    {
-      "name":"<s:property value='#element.dir' />", 
-      "path":"<s:property value='#element.path' />",
+      "name":"<s:property value='#element.dir_directory' />", 
+      "path":"<s:property value='#element.dir_path' />",
       "time":"<s:property value='#element.time' />",
       "size":"<s:property value='#element.size' />",
       "count":"<s:property value='#element.count' />"

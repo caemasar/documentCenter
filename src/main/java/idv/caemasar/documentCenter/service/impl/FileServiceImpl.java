@@ -57,22 +57,22 @@ public class FileServiceImpl implements FileService
 	
 	public void addFiles(UploadFile uploadFile) throws Exception
 	{
-		int i = 0;			
-		for(File f: uploadFile.getUpload())
-		{			
-			String currentPath = uploadFile.getUserInfo().getUserRoot()
-					+ (File.separator.equals("\\") ? uploadFile.getUploadPath().replaceAll("/",
-							"\\\\") : uploadFile.getUploadPath());
-			String fn = saveFile(f, currentPath + uploadFile.getUploadFileName().get(i));
-			idv.caemasar.documentCenter.entity.File file = new idv.caemasar.documentCenter.entity.File();
-			file.setUser(uploadFile.getUserInfo().getCookieUser());
-			file.setFile(new File(fn).getName());
-			file.setPath(uploadFile.getUploadPath());
-			file.setSize(f.length());
-			file.setUploadTime(new java.util.Date());
-			fileDAO.save(file);			
-			i++;
-		}
+//		int i = 0;			
+//		for(File f: uploadFile.getUpload())
+//		{			
+//			String currentPath = uploadFile.getUserInfo().getUserRoot()
+//					+ (File.separator.equals("\\") ? uploadFile.getUploadPath().replaceAll("/",
+//							"\\\\") : uploadFile.getUploadPath());
+//			String fn = saveFile(f, currentPath + uploadFile.getUploadFileName().get(i));
+//			idv.caemasar.documentCenter.entity.File file = new idv.caemasar.documentCenter.entity.File();
+//			file.setUser(uploadFile.getUserInfo().getCookieUser());
+//			file.setFile(new File(fn).getName());
+//			file.setPath(uploadFile.getUploadPath());
+//			file.setSize(f.length());
+//			file.setUploadTime(new java.util.Date());
+//			fileDAO.save(file);			
+//			i++;
+//		}
 
 	}
  
