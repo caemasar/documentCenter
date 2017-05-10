@@ -44,9 +44,9 @@
 		<ul class="nav navbar-nav navbar-right">
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
-					<input type="text" class="form-control" />
+					<input type="text" class="form-control" id="kwy_word"/>
 				</div>
-				<button type="submit" class="btn btn-default">搜索</button>
+				<a class="btn btn-default" onclick="jsonLoadSearchFile()">搜索</a>
 			</form>
 			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=session.getAttribute("username")%><span
 					class="badge">4</span><strong class="caret"></strong></a>

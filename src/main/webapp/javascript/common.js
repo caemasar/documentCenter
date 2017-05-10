@@ -131,6 +131,43 @@ function refreshDirList() {
 		alert(result.error);
 	}
 }
+// 搜索开始
+function jsonLoadSearchFile() {
+	clearTable("tbl_list");
+	
+	var url = 'search.action';
+	var kwy_word = document.getElementById("kwy_word").value;
+	var myAjax = new Ajax.Request(url, {
+		method : 'post',
+		parameters : 'kwyWord=' + kwy_word,
+		onComplete : processLoadSearchFile,
+		asynchronous : false
+	});
+
+}
+function processLoadSearchFile(request) {
+
+	var obj = request.responseText.evalJSON();
+	var divCurrentPath = document.getElementById("div_current_path");
+
+	if (divCurrentPath) {
+
+		divCurrentPath.innerHTML = "\u641c\u7d22\u7ed3\u679c\uff1a";
+
+	}
+
+	loadSearchFile(obj.files);
+}
+function loadSearchFile(obj) {
+	for (var i = 0; i < obj.length; i++) {
+		addRowToTable(window, "tbl_list", new Array(packageFile(obj[i]),
+				obj[i].time, getFormatSize(obj[i].size)));
+	}
+	var x = document.getElementById("crud_bt");
+	x.remove();
+}
+
+// 搜索结束
 
 function jsonLoadDirAndFile() {
 	var url = 'dir.action';
@@ -140,7 +177,7 @@ function jsonLoadDirAndFile() {
 		onComplete : processLoadDirAndFile,
 		asynchronous : false
 	});
-	
+
 }
 function processLoadDirAndFile(request) {
 
@@ -156,7 +193,6 @@ function showCreateDirDialog() {
 }
 function jsonCreateDir() {
 
-	
 	var url = 'createDir.action';
 
 	var params = $(document.getElementById('form_dir')).serialize();
@@ -171,7 +207,7 @@ function jsonCreateDir() {
 
 		asynchronous : true
 	});
-	//window.close();
+	// window.close();
 }
 
 function processResponse(request) {

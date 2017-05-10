@@ -57,7 +57,11 @@
 			class="idv.caemasar.documentCenter.action.DownloadMoreFileAction" />
 
 		<action name="delete" class="idv.caemasar.documentCenter.action.DeleteAction" />
-
+		<action name="search" class="idv.caemasar.documentCenter.action.SearchAction">
+			<result name="success">/WEB-INF/jsp/file_result.jsp</result>
+			<result name="error" type="redirect">main_page.action</result>
+			<result name="input" type="redirect">main_page.action</result>
+		</action>
 		<action name="disk" class="idv.caemasar.documentCenter.action.DiskAction">
 			<result name="success">/WEB-INF/jsp/disk_result.jsp</result>
 		</action>

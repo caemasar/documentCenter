@@ -12,5 +12,5 @@ public interface FileService
 	public void deleteFile(UserInfo userInfo, String file);
 	public long getUserDiskSize(String username);
 	public List<File> getFiles(String username, String path);
-	
+	public List<File> searchFiles(int uID, String kwyWord);
 }

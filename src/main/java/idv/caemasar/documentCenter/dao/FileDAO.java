@@ -12,5 +12,6 @@ public interface FileDAO
 	public void delete(UserInfo userInfo, String file);
 	public long getUserDiskSize(String username);
 	public List<File> getFiles(String username, String path);
+	public List<idv.caemasar.documentCenter.entity.File> searchFiles(int uID, String kwyWord);
 	
 } 

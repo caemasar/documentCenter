@@ -96,4 +96,9 @@ public class FileServiceImpl implements FileService
 	{		
 		return fileDAO.getUserDiskSize(u_id);
 	}
+
+	@Override
+	public List<idv.caemasar.documentCenter.entity.File> searchFiles(int uID, String kwyWord) {
+		return fileDAO.searchFiles(uID, kwyWord);
+	}
 }

@@ -39,7 +39,7 @@
 					<div class="col-md-12">
 						<div class="row">
 							<div class="col-md-12">
-								<div class="btn-group">
+								<div class="btn-group" id="crud_bt">
 									<c:choose>
 										<c:when test="${param.current_path == null}">
 											<input type="hidden" value="/" name="txt_path" id="txt_path" />
