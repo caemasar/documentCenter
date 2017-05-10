@@ -19,9 +19,10 @@ public class UploadAction extends BaseAction implements ModelDriven<UploadFile>
 	{	
 		try
 		{
+			userInfo.setUid(getCookieValue("u_id"));
 			uploadFile.setUserInfo(userInfo);
 			FileService fileService = serviceManager.getFileService();
-			fileService.addFiles(uploadFile);
+			fileService.addFiles(uploadFile,serviceManager);
 			return SUCCESS;
 		}
 		catch (Exception e)

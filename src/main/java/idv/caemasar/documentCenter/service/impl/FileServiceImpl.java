@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import idv.caemasar.documentCenter.dao.FileDAO;
+import idv.caemasar.documentCenter.service.DirectoryService;
 import idv.caemasar.documentCenter.service.FileService;
 import idv.caemasar.documentCenter.utils.UploadFile;
 import idv.caemasar.documentCenter.utils.UserInfo;
@@ -55,24 +56,27 @@ public class FileServiceImpl implements FileService
 	}
 			
 	
-	public void addFiles(UploadFile uploadFile) throws Exception
+	public void addFiles(UploadFile uploadFile,ServiceManager manager) throws Exception
 	{
-//		int i = 0;			
-//		for(File f: uploadFile.getUpload())
-//		{			
-//			String currentPath = uploadFile.getUserInfo().getUserRoot()
-//					+ (File.separator.equals("\\") ? uploadFile.getUploadPath().replaceAll("/",
-//							"\\\\") : uploadFile.getUploadPath());
-//			String fn = saveFile(f, currentPath + uploadFile.getUploadFileName().get(i));
-//			idv.caemasar.documentCenter.entity.File file = new idv.caemasar.documentCenter.entity.File();
-//			file.setUser(uploadFile.getUserInfo().getCookieUser());
-//			file.setFile(new File(fn).getName());
-//			file.setPath(uploadFile.getUploadPath());
-//			file.setSize(f.length());
-//			file.setUploadTime(new java.util.Date());
-//			fileDAO.save(file);			
-//			i++;
-//		}
+		int i = 0;			
+		for(File f: uploadFile.getUpload())
+		{			
+			String currentPath = uploadFile.getUserInfo().getUserRoot()
+					+ (File.separator.equals("\\") ? uploadFile.getUploadPath().replaceAll("/",
+							"\\\\") : uploadFile.getUploadPath());
+			String fn = saveFile(f, currentPath + uploadFile.getUploadFileName().get(i));
+			idv.caemasar.documentCenter.entity.File file = new idv.caemasar.documentCenter.entity.File();
+			file.setFile_userid(Integer.parseInt(uploadFile.getUserInfo().getUid()));
+			file.setFile_filename(new File(fn).getName());
+			DirectoryService directoryService = manager
+					.getDirectoryService();
+			int path_id = directoryService.getDirID(uploadFile.getUserInfo().getUid(), uploadFile.getUploadPath());
+			file.setFile_path(path_id);
+			file.setFile_size(f.length());
+			file.setFile_uploadtime(new java.util.Date());
+			fileDAO.save(file);			
+			i++;
+		}
 
 	}
  
