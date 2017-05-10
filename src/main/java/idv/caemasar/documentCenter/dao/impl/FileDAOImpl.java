@@ -16,7 +16,7 @@ public class FileDAOImpl extends HibernateDaoSupport implements FileDAO
 	{
 		this.getHibernateTemplate().bulkUpdate("delete from File where file_userid = ? and file_path like ?",
 				new Object[]
-				{ userInfo.getUid(), Integer.parseInt(path) });
+				{ Integer.parseInt(userInfo.getUid()), Integer.parseInt(path) });
 	}
 
 	public void delete(UserInfo userInfo, String file)

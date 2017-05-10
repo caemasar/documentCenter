@@ -171,7 +171,7 @@ function jsonCreateDir() {
 
 		asynchronous : true
 	});
-	window.close();
+	//window.close();
 }
 
 function processResponse(request) {
