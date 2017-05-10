@@ -13,5 +13,19 @@
 		<mapping resource="idv\caemasar\documentCenter\entity\Directory.hbm.xml" />
 		<mapping resource="idv\caemasar\documentCenter\entity\DirInfo.hbm.xml" />
 		<mapping resource="idv\caemasar\documentCenter\entity\File.hbm.xml" />
+		<mapping resource="idv/caemasar/documentCenter/entity/DcTGroups.hbm.xml" />
+        <mapping resource="idv/caemasar/documentCenter/entity/DcTDepartments.hbm.xml" />
+        <mapping resource="idv/caemasar/documentCenter/entity/DcTFiles.hbm.xml" />
+        <mapping resource="idv/caemasar/documentCenter/entity/DcTMails.hbm.xml" />
+        <mapping resource="idv/caemasar/documentCenter/entity/DcTDirectoryLog.hbm.xml" />
+        <mapping resource="idv/caemasar/documentCenter/entity/DcTGroupsUsers.hbm.xml" />
+        <mapping resource="idv/caemasar/documentCenter/entity/DcTPermissions.hbm.xml" />
+        <mapping resource="idv/caemasar/documentCenter/entity/DcTUsers.hbm.xml" />
+        <mapping resource="idv/caemasar/documentCenter/entity/DcTFileLog.hbm.xml" />
+        <mapping resource="idv/caemasar/documentCenter/entity/DcTUserLog.hbm.xml" />
+        <mapping resource="idv/caemasar/documentCenter/entity/DcTUsersPermissions.hbm.xml" />
+        <mapping resource="idv/caemasar/documentCenter/entity/DcTGroupsPermissions.hbm.xml" />
+        <mapping resource="idv/caemasar/documentCenter/entity/DcTDirectories.hbm.xml" />
+        <mapping resource="idv/caemasar/documentCenter/entity/DcTShareboxs.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

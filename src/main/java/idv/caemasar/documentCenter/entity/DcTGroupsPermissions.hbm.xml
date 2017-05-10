@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-11 2:20:15 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="idv.caemasar.documentCenter.entity.DcTGroupsPermissions" table="dc_t_groups_permissions" catalog="document_center" optimistic-lock="version">
+        <id name="gpId" type="java.lang.Integer">
+            <column name="gp_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="dcTGroups" class="idv.caemasar.documentCenter.entity.DcTGroups" fetch="select">
+            <column name="gp_groupid">
+                <comment>
+                &#200;&#168;&#207;&#222;&#215;&#233;&#200;&#168;&#207;&#222;&#215;&#233;&#193;&#170;&#177;&#237;&#182;&#212;&#211;&#166;&#200;&#168;&#207;&#222;&#215;&#233;ID</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="dcTPermissions" class="idv.caemasar.documentCenter.entity.DcTPermissions" fetch="select">
+            <column name="gp_perid">
+                <comment>
+                &#200;&#168;&#207;&#222;&#215;&#233;&#200;&#168;&#207;&#222;&#215;&#233;&#193;&#170;&#177;&#237;&#182;&#212;&#211;&#166;&#200;&#168;&#207;&#222;ID</comment>
+            </column>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

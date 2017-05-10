@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-11 2:20:15 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="idv.caemasar.documentCenter.entity.DcTFiles" table="dc_t_files" catalog="document_center" optimistic-lock="version">
+        <id name="flieId" type="java.lang.Integer">
+            <column name="flie_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="dcTDirectories" class="idv.caemasar.documentCenter.entity.DcTDirectories" fetch="select">
+            <column name="file_path">
+                <comment>&#206;&#196;&#188;&#254;&#194;&#183;&#190;&#182;</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="dcTUsers" class="idv.caemasar.documentCenter.entity.DcTUsers" fetch="select">
+            <column name="file_userid">
+                <comment>&#206;&#196;&#188;&#254;&#203;&#249;&#202;&#244;&#211;&#195;&#187;&#167;ID</comment>
+            </column>
+        </many-to-one>
+        <property name="fileFilename" type="string">
+            <column name="file_filename">
+                <comment>&#206;&#196;&#188;&#254;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="fileSize" type="java.lang.Double">
+            <column name="file_size" precision="22" scale="0">
+                <comment>&#206;&#196;&#188;&#254;&#180;&#243;&#208;&#161;</comment>
+            </column>
+        </property>
+        <property name="fileUploadtime" type="timestamp">
+            <column name="file_uploadtime" length="19">
+                <comment>&#206;&#196;&#188;&#254;&#201;&#207;&#180;&#171;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="fileType" type="java.lang.Integer">
+            <column name="file_type">
+                <comment>
+                &#206;&#196;&#181;&#181;&#192;&#224;&#208;&#205;&#163;&#168;&#183;&#214;&#206;&#170;&#184;&#246;&#200;&#203;&#206;&#196;&#181;&#181;&#188;&#176;&#178;&#191;&#195;&#197;&#206;&#196;&#181;&#181;&#163;&#172;0&#206;&#170;&#184;&#246;&#200;&#203;&#206;&#196;&#181;&#181;&#163;&#172;1&#206;&#170;&#178;&#191;&#195;&#197;&#206;&#196;&#181;&#181;&#163;&#169;</comment>
+            </column>
+        </property>
+        <set name="dcTFileLogs" table="dc_t_file_log" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="flog_fileid">
+                    <comment>&#206;&#196;&#181;&#181;&#200;&#213;&#214;&#190;&#203;&#249;&#202;&#244;&#206;&#196;&#188;&#254;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTFileLog" />
+        </set>
+        <set name="dcTShareboxses" table="dc_t_shareboxs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="share_fileid">
+                    <comment>&#206;&#196;&#188;&#254;&#183;&#214;&#207;&#237;&#206;&#196;&#188;&#254;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTShareboxs" />
+        </set>
+    </class>
+</hibernate-mapping>

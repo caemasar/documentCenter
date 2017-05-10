@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-11 2:20:15 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="idv.caemasar.documentCenter.entity.DcTPermissions" table="dc_t_permissions" catalog="document_center" optimistic-lock="version">
+        <id name="perId" type="java.lang.Integer">
+            <column name="per_id" />
+            <generator class="identity" />
+        </id>
+        <property name="perPermission" type="string">
+            <column name="per_permission">
+                <comment>&#200;&#168;&#207;&#222;&#204;&#216;&#213;&#247;&#194;&#235;</comment>
+            </column>
+        </property>
+        <property name="perDescpt" type="string">
+            <column name="per_descpt">
+                <comment>&#200;&#168;&#207;&#222;&#195;&#232;&#202;&#246;</comment>
+            </column>
+        </property>
+        <property name="perCategory" type="string">
+            <column name="per_category">
+                <comment>&#200;&#168;&#207;&#222;&#183;&#214;&#192;&#224;</comment>
+            </column>
+        </property>
+        <set name="dcTGroupsPermissionses" table="dc_t_groups_permissions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="gp_perid">
+                    <comment>
+                    &#200;&#168;&#207;&#222;&#215;&#233;&#200;&#168;&#207;&#222;&#215;&#233;&#193;&#170;&#177;&#237;&#182;&#212;&#211;&#166;&#200;&#168;&#207;&#222;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTGroupsPermissions" />
+        </set>
+        <set name="dcTUsersPermissionses" table="dc_t_users_permissions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="up_perid">
+                    <comment>&#211;&#195;&#187;&#167;&#200;&#168;&#207;&#222;&#177;&#237;&#182;&#212;&#211;&#166;&#200;&#168;&#207;&#222;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTUsersPermissions" />
+        </set>
+    </class>
+</hibernate-mapping>

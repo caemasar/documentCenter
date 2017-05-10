@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-11 2:20:15 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="idv.caemasar.documentCenter.entity.DcTDirectories" table="dc_t_directories" catalog="document_center" optimistic-lock="version">
+        <id name="dirId" type="java.lang.Integer">
+            <column name="dir_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="dcTUsers" class="idv.caemasar.documentCenter.entity.DcTUsers" fetch="select">
+            <column name="dir_userid">
+                <comment>&#196;&#191;&#194;&#188;&#203;&#249;&#202;&#244;&#211;&#195;&#187;&#167;ID</comment>
+            </column>
+        </many-to-one>
+        <property name="dirPath" type="string">
+            <column name="dir_path">
+                <comment>&#196;&#191;&#194;&#188;&#194;&#183;&#190;&#182;</comment>
+            </column>
+        </property>
+        <property name="dirParentPath" type="string">
+            <column name="dir_parent_path">
+                <comment>&#196;&#191;&#194;&#188;&#184;&#184;&#194;&#183;&#190;&#182;</comment>
+            </column>
+        </property>
+        <property name="dirDirectory" type="string">
+            <column name="dir_directory">
+                <comment>&#196;&#191;&#194;&#188;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="dirCreatTime" type="timestamp">
+            <column name="dir_creat_time" length="19">
+                <comment>&#196;&#191;&#194;&#188;&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="dirType" type="java.lang.Integer">
+            <column name="dir_type">
+                <comment>
+                &#196;&#191;&#194;&#188;&#192;&#224;&#208;&#205;&#163;&#168;&#183;&#214;&#206;&#170;&#184;&#246;&#200;&#203;&#196;&#191;&#194;&#188;&#188;&#176;&#178;&#191;&#195;&#197;&#196;&#191;&#194;&#188;&#163;&#172;0&#206;&#170;&#184;&#246;&#200;&#203;&#196;&#191;&#194;&#188;&#163;&#172;1&#206;&#170;&#178;&#191;&#195;&#197;&#196;&#191;&#194;&#188;&#163;&#169;</comment>
+            </column>
+        </property>
+        <set name="dcTDirectoryLogs" table="dc_t_directory_log" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dlog_dirid">
+                    <comment>&#196;&#191;&#194;&#188;&#200;&#213;&#214;&#190;&#203;&#249;&#202;&#244;&#196;&#191;&#194;&#188;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTDirectoryLog" />
+        </set>
+        <set name="dcTFileses" table="dc_t_files" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="file_path">
+                    <comment>&#206;&#196;&#188;&#254;&#194;&#183;&#190;&#182;</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTFiles" />
+        </set>
+    </class>
+</hibernate-mapping>

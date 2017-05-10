@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-11 2:20:15 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="idv.caemasar.documentCenter.entity.DcTGroupsUsers" table="dc_t_groups_users" catalog="document_center" optimistic-lock="version">
+        <id name="guId" type="java.lang.Integer">
+            <column name="gu_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="dcTGroups" class="idv.caemasar.documentCenter.entity.DcTGroups" fetch="select">
+            <column name="gu_groupid">
+                <comment>&#211;&#195;&#187;&#167;&#200;&#168;&#207;&#222;&#215;&#233;&#177;&#237;&#182;&#212;&#211;&#166;&#200;&#168;&#207;&#222;&#215;&#233;ID</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="dcTUsers" class="idv.caemasar.documentCenter.entity.DcTUsers" fetch="select">
+            <column name="gu_userid">
+                <comment>&#211;&#195;&#187;&#167;&#200;&#168;&#207;&#222;&#215;&#233;&#177;&#237;&#182;&#212;&#211;&#166;&#211;&#195;&#187;&#167;ID</comment>
+            </column>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

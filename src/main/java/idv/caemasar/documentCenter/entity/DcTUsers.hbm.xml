@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-11 2:20:15 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="idv.caemasar.documentCenter.entity.DcTUsers" table="dc_t_users" catalog="document_center" optimistic-lock="version">
+        <id name="UId" type="java.lang.Integer">
+            <column name="u_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="dcTDepartments" class="idv.caemasar.documentCenter.entity.DcTDepartments" fetch="select">
+            <column name="u_deptid">
+                <comment>&#211;&#195;&#187;&#167;&#178;&#191;&#195;&#197;&#177;&#224;&#186;&#197;</comment>
+            </column>
+        </many-to-one>
+        <property name="UUsername" type="string">
+            <column name="u_username">
+                <comment>&#211;&#195;&#187;&#167;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="UPassword" type="string">
+            <column name="u_password">
+                <comment>&#211;&#195;&#187;&#167;&#195;&#220;&#194;&#235;</comment>
+            </column>
+        </property>
+        <property name="URealname" type="string">
+            <column name="u_realname">
+                <comment>&#213;&#230;&#202;&#181;&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="UEmail" type="string">
+            <column name="u_email">
+                <comment>&#211;&#195;&#187;&#167;&#211;&#202;&#207;&#228;</comment>
+            </column>
+        </property>
+        <property name="UPhone" type="string">
+            <column name="u_phone">
+                <comment>&#211;&#195;&#187;&#167;&#186;&#197;&#194;&#235;</comment>
+            </column>
+        </property>
+        <property name="UIdentity" type="java.lang.Integer">
+            <column name="u_identity">
+                <comment>
+                &#201;&#237;&#183;&#221;&#163;&#168;&#202;&#199;&#183;&#241;&#206;&#170;&#178;&#191;&#195;&#197;&#185;&#220;&#192;&#237;&#200;&#203;&#212;&#177;&#163;&#172;0&#178;&#187;&#206;&#170;&#185;&#220;&#192;&#237;&#200;&#203;&#212;&#177;&#163;&#172;1&#206;&#170;&#185;&#220;&#192;&#237;&#200;&#203;&#212;&#177;&#163;&#169;</comment>
+            </column>
+        </property>
+        <set name="dcTMailsesForMailFromUserid" table="dc_t_mails" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mail_from_userid">
+                    <comment>&#213;&#190;&#196;&#218;&#208;&#197;&#183;&#162;&#203;&#205;&#213;&#223;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTMails" />
+        </set>
+        <set name="dcTMailsesForMailToUserid" table="dc_t_mails" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mail_to_userid">
+                    <comment>&#213;&#190;&#196;&#218;&#208;&#197;&#189;&#211;&#202;&#213;&#213;&#223;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTMails" />
+        </set>
+        <set name="dcTShareboxsesForShareFromUserid" table="dc_t_shareboxs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="share_from_userid">
+                    <comment>&#206;&#196;&#188;&#254;&#183;&#214;&#207;&#237;&#183;&#162;&#203;&#205;&#213;&#223;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTShareboxs" />
+        </set>
+        <set name="dcTFileLogs" table="dc_t_file_log" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="flog_userid">
+                    <comment>&#206;&#196;&#181;&#181;&#200;&#213;&#214;&#190;&#203;&#249;&#202;&#244;&#211;&#195;&#187;&#167;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTFileLog" />
+        </set>
+        <set name="dcTDirectoryLogs" table="dc_t_directory_log" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dlog_userid">
+                    <comment>&#196;&#191;&#194;&#188;&#203;&#249;&#202;&#244;&#211;&#195;&#187;&#167;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTDirectoryLog" />
+        </set>
+        <set name="dcTShareboxsesForShareToUserid" table="dc_t_shareboxs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="share_to_userid">
+                    <comment>&#206;&#196;&#188;&#254;&#183;&#214;&#207;&#237;&#189;&#211;&#202;&#213;&#213;&#223;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTShareboxs" />
+        </set>
+        <set name="dcTGroupsUserses" table="dc_t_groups_users" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="gu_userid">
+                    <comment>&#211;&#195;&#187;&#167;&#200;&#168;&#207;&#222;&#215;&#233;&#177;&#237;&#182;&#212;&#211;&#166;&#211;&#195;&#187;&#167;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTGroupsUsers" />
+        </set>
+        <set name="dcTUsersPermissionses" table="dc_t_users_permissions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="up_userid">
+                    <comment>&#211;&#195;&#187;&#167;&#200;&#168;&#207;&#222;&#177;&#237;&#182;&#212;&#211;&#166;&#211;&#195;&#187;&#167;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTUsersPermissions" />
+        </set>
+        <set name="dcTDirectorieses" table="dc_t_directories" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dir_userid">
+                    <comment>&#196;&#191;&#194;&#188;&#203;&#249;&#202;&#244;&#211;&#195;&#187;&#167;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTDirectories" />
+        </set>
+        <set name="dcTFileses" table="dc_t_files" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="file_userid">
+                    <comment>&#206;&#196;&#188;&#254;&#203;&#249;&#202;&#244;&#211;&#195;&#187;&#167;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTFiles" />
+        </set>
+        <set name="dcTUserLogs" table="dc_t_user_log" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ulog_userid">
+                    <comment>&#211;&#195;&#187;&#167;&#200;&#213;&#214;&#190;&#203;&#249;&#202;&#244;&#211;&#195;&#187;&#167;ID</comment>
+                </column>
+            </key>
+            <one-to-many class="idv.caemasar.documentCenter.entity.DcTUserLog" />
+        </set>
+    </class>
+</hibernate-mapping>

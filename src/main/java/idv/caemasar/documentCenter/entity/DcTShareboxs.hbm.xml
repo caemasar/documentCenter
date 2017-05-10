@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-11 2:20:15 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="idv.caemasar.documentCenter.entity.DcTShareboxs" table="dc_t_shareboxs" catalog="document_center" optimistic-lock="version">
+        <id name="shareId" type="java.lang.Integer">
+            <column name="share_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="dcTFiles" class="idv.caemasar.documentCenter.entity.DcTFiles" fetch="select">
+            <column name="share_fileid">
+                <comment>&#206;&#196;&#188;&#254;&#183;&#214;&#207;&#237;&#206;&#196;&#188;&#254;ID</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="dcTUsersByShareFromUserid" class="idv.caemasar.documentCenter.entity.DcTUsers" fetch="select">
+            <column name="share_from_userid">
+                <comment>&#206;&#196;&#188;&#254;&#183;&#214;&#207;&#237;&#183;&#162;&#203;&#205;&#213;&#223;ID</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="dcTUsersByShareToUserid" class="idv.caemasar.documentCenter.entity.DcTUsers" fetch="select">
+            <column name="share_to_userid">
+                <comment>&#206;&#196;&#188;&#254;&#183;&#214;&#207;&#237;&#189;&#211;&#202;&#213;&#213;&#223;ID</comment>
+            </column>
+        </many-to-one>
+        <property name="shareSendtime" type="timestamp">
+            <column name="share_sendtime" length="19">
+                <comment>&#206;&#196;&#188;&#254;&#183;&#214;&#207;&#237;&#183;&#162;&#203;&#205;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-11 2:20:15 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="idv.caemasar.documentCenter.entity.DcTUserLog" table="dc_t_user_log" catalog="document_center" optimistic-lock="version">
+        <id name="ulogId" type="java.lang.Integer">
+            <column name="ulog_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="dcTUsers" class="idv.caemasar.documentCenter.entity.DcTUsers" fetch="select">
+            <column name="ulog_userid">
+                <comment>&#211;&#195;&#187;&#167;&#200;&#213;&#214;&#190;&#203;&#249;&#202;&#244;&#211;&#195;&#187;&#167;ID</comment>
+            </column>
+        </many-to-one>
+        <property name="ulogTime" type="timestamp">
+            <column name="ulog_time" length="19">
+                <comment>&#211;&#195;&#187;&#167;&#200;&#213;&#214;&#190;&#181;&#199;&#194;&#188;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="ulogIp" type="string">
+            <column name="ulog_ip">
+                <comment>&#211;&#195;&#187;&#167;&#181;&#199;&#194;&#188;IP</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>
