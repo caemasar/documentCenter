@@ -11,4 +11,6 @@ public interface DirectoryDAO
     public void save(Directory directory);
 	public void delete(UserInfo userInfo, String path);	
 	public List<DirInfo> getDirInfo(String user, String parentPath);
+	public int getDirID(String u_id, String path);
+	public String getDirPath(String dir_id);
 }

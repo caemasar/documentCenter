@@ -13,7 +13,7 @@ public class DiskAction extends BaseAction
 		try
 		{
 			FileService fileService = serviceManager.getFileService();
-			diskSize = fileService.getUserDiskSize(userInfo.getCookieUser());
+			diskSize = fileService.getUserDiskSize(getCookieValue("u_id"));
 		}
 		catch (Exception e)
 		{

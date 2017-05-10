@@ -14,39 +14,43 @@ public class FileDAOImpl extends HibernateDaoSupport implements FileDAO
 
 	public void deleteFiles(UserInfo userInfo, String path)
 	{
-		this.getHibernateTemplate().bulkUpdate("delete from File where user=? and path like ?",
+		this.getHibernateTemplate().bulkUpdate("delete from File where file_userid = ? and file_path like ?",
 				new Object[]
-				{ userInfo.getCookieUser(), path });
+				{ userInfo.getUid(), Integer.parseInt(path) });
 	}
 
 	public void delete(UserInfo userInfo, String file)
 	{
-		this.getHibernateTemplate().bulkUpdate("delete from File where user = ? and concat(path, file) = ?",
+		this.getHibernateTemplate().bulkUpdate("delete from File where file_userid = ? and concat(file_path, file_filename) = ?",
 				new Object[]
-				{ userInfo.getCookieUser(), file });
+				{ userInfo.getUid(), file });
 	}
 
 	public void save(File file)
 	{
+		
+		
 		this.getHibernateTemplate().save(file);
 
 	}
 
-	public List<File> getFiles(String username, String path)
+	@SuppressWarnings("unchecked")
+	public List<File> getFiles(String u_id, String path_id)
 	{
 		return (List<File>) this.getHibernateTemplate()
 				.findByNamedParam(
-						"from File where user = :user and path = :path order by uploadTime",
+						"from File where file_userid = :file_userid and file_path = :file_path order by file_uploadtime",
 						new String[]
-						{ "user", "path" }, new Object[]
-						{ username, path });
+						{ "file_userid", "file_path" }, new Object[]
+						{ Integer.parseInt(u_id), Integer.parseInt(path_id) });
 
 	}
 
-	public long getUserDiskSize(String username)
+	public long getUserDiskSize(String u_id)
 	{
 	
-		List<Long> fileSize = (List<Long>) this.getHibernateTemplate().find("select sum(size) from File where user = ?", username);
+		@SuppressWarnings("unchecked")
+		List<Long> fileSize = (List<Long>) this.getHibernateTemplate().find("select sum(file_size) from File where file_userid = ?", u_id);
 		if(fileSize.size() > 0)
 			return fileSize.get(0);
 		return 0;

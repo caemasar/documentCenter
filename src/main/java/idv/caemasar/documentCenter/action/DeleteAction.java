@@ -14,11 +14,12 @@ public class DeleteAction extends BaseAction {
 		try {
 			DirectoryService directoryService = serviceManager.getDirectoryService();
 			FileService fileService = serviceManager.getFileService();
+			userInfo.setUid(getCookieValue("u_id"));
+			
 			for (String path : paths) {
 				if (path != null) {
 					// 删除目录
 					if (path.charAt(path.length() - 1) == '/') {
-						userInfo.setUid(getCookieValue("u_id"));
 						directoryService.deleteDirectory(userInfo, path);
 					}
 					// 删除文件

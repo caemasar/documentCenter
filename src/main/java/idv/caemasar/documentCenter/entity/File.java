@@ -9,10 +9,19 @@ public class File
 	private int file_userid;
 	private String file_filename;
 	private int file_path;
+	private String flie_pathname;
 	private double file_size;
 	private Date file_uploadtime;
 	private int file_type;
 	private String time;
+
+	public String getFlie_pathname() {
+		return flie_pathname;
+	}
+
+	public void setFlie_pathname(String flie_pathname) {
+		this.flie_pathname = flie_pathname;
+	}
 
 	public String getTime()
 	{

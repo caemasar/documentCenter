@@ -57,7 +57,18 @@ public class DirectoryServiceImpl implements DirectoryService
 	public void deleteDirectory(UserInfo userInfo, String path)
 	{
 		directoryDAO.delete(userInfo, path);
-		fileDAO.deleteFiles(userInfo, path);	
+		int path_id = this.getDirID(userInfo.getUid(), path);
+		fileDAO.deleteFiles(userInfo, String.valueOf(path_id));	
 		idv.caemasar.documentCenter.utils.MyFile.deleteAny(userInfo.getAbsolutePath(path));
+	}
+
+	@Override
+	public int getDirID(String u_id, String path) {
+		return directoryDAO.getDirID(u_id, path);
+	}
+
+	@Override
+	public String getDirPath(String dir_id) {
+		return directoryDAO.getDirPath(dir_id);
 	}
 }

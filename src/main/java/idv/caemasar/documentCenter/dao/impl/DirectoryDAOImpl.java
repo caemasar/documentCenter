@@ -34,4 +34,26 @@ public class DirectoryDAOImpl extends HibernateDaoSupport implements DirectoryDA
 		return directories;
 	}
 
+	@Override
+	public int getDirID(String u_id, String path) {
+		String hql = "select dir_id from Directory where dir_userid = ? and dir_path = ?";
+
+		@SuppressWarnings("unchecked")
+		java.util.List<Integer> dir_id = (List<Integer>) this.getHibernateTemplate().find(hql, Integer.parseInt(u_id),path);
+		if (dir_id.size() > 0)
+			return dir_id.get(0);
+		return -1;
+	}
+
+	@Override
+	public String getDirPath(String dir_id) {
+		String hql = "select dir_path from Directory where dir_id = ?";
+
+		@SuppressWarnings("unchecked")
+		java.util.List<String> dir_path = (List<String>) this.getHibernateTemplate().find(hql, Integer.parseInt(dir_id));
+		if (dir_path.size() > 0)
+			return dir_path.get(0);
+		return "///";
+	}
+
 }

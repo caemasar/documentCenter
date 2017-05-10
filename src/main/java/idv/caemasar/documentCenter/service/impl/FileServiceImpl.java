@@ -83,13 +83,13 @@ public class FileServiceImpl implements FileService
 	}
 
 
-	public List<idv.caemasar.documentCenter.entity.File> getFiles(String username, String path)
+	public List<idv.caemasar.documentCenter.entity.File> getFiles(String u_id, String path)
 	{		
-		return fileDAO.getFiles(username, path);
+		return fileDAO.getFiles(u_id, path);
 	}
  
-	public long getUserDiskSize(String username)
+	public long getUserDiskSize(String u_id)
 	{		
-		return fileDAO.getUserDiskSize(username);
+		return fileDAO.getUserDiskSize(u_id);
 	}
 }
