@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import idv.caemasar.documentCenter.dao.UserDAO;
+import idv.caemasar.documentCenter.entity.DcTDepartments;
 import idv.caemasar.documentCenter.entity.User;
 
 public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
@@ -43,6 +44,28 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 		if (u_ids.size() > 0)
 			return u_ids.get(0);
 		return -1;
+	}
+
+	@Override
+	public int getUserDeptID(int uID) {
+		String hql = "select u_deptid from User where u_id = ?";
+
+		@SuppressWarnings("unchecked")
+		java.util.List<Integer> u_deptids = (List<Integer>) this.getHibernateTemplate().find(hql, uID);
+		if (u_deptids.size() > 0)
+			return u_deptids.get(0);
+		return -1;
+	}
+
+	@Override
+	public List<User> getMemberByDeptID(int dept_id) {
+		@SuppressWarnings("unchecked")
+		List<User> Users = (List<User>) this.getHibernateTemplate().findByNamedParam(
+				"from User where u_deptid = :u_deptid", new String[] { "u_deptid" }, new Object[] { dept_id });
+		if (Users.size() > 0) {
+			return Users;
+		}
+		return null;
 	}
 
 }

@@ -105,6 +105,7 @@
 				<value>userDAO</value>
 				<value>directoryDAO</value>
 				<value>fileDAO</value>
+				<value>departmentDAO</value>
 			</list>
 		</property>
 		<property name="interceptorNames">
@@ -131,13 +132,20 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-
-	<bean id="userService" class="idv.caemasar.documentCenter.service.impl.UserServiceImpl">
+	<bean id="departmentDAO" class="idv.caemasar.documentCenter.dao.impl.DepartmentDAOImpl">
+		<!-- <constructor-arg> <ref bean="hibernateTemplate" /> </constructor-arg> -->
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="userService"
+		class="idv.caemasar.documentCenter.service.impl.UserServiceImpl">
 		<constructor-arg>
 			<ref bean="userDAO" />
 		</constructor-arg>
 	</bean>
-	<bean id="directoryService" class="idv.caemasar.documentCenter.service.impl.DirectoryServiceImpl">
+	<bean id="directoryService"
+		class="idv.caemasar.documentCenter.service.impl.DirectoryServiceImpl">
 		<constructor-arg>
 			<ref bean="directoryDAO" />
 		</constructor-arg>
@@ -145,9 +153,16 @@
 			<ref bean="fileDAO" />
 		</constructor-arg>
 	</bean>
-	<bean id="fileService" class="idv.caemasar.documentCenter.service.impl.FileServiceImpl">
+	<bean id="fileService"
+		class="idv.caemasar.documentCenter.service.impl.FileServiceImpl">
 		<constructor-arg>
 			<ref bean="fileDAO" />
+		</constructor-arg>
+	</bean>
+	<bean id="departmentService"
+		class="idv.caemasar.documentCenter.service.impl.DepartmentServiceImpl">
+		<constructor-arg>
+			<ref bean="departmentDAO" />
 		</constructor-arg>
 	</bean>
 	<bean id="serviceManager" class="idv.caemasar.documentCenter.service.impl.ServiceManager">
@@ -160,6 +175,9 @@
 		<property name="fileService">
 			<ref bean="fileService" />
 		</property>
+		<property name="departmentService">
+			<ref bean="departmentService" />
+		</property>
 	</bean>
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -169,7 +187,8 @@
 	</bean>
 
 
-	<bean id="userInfo" class="idv.caemasar.documentCenter.utils.UserInfo" scope="prototype">
+	<bean id="userInfo" class="idv.caemasar.documentCenter.utils.UserInfo"
+		scope="prototype">
 		<property name="root" value="${disk.root}" />
 	</bean>
 

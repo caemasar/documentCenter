@@ -131,6 +131,7 @@ function refreshDirList() {
 		alert(result.error);
 	}
 }
+
 // 搜索开始
 function jsonLoadSearchFile() {
 	clearTable("tbl_list");

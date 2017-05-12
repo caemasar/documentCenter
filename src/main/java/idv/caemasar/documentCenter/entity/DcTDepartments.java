@@ -65,4 +65,10 @@ public class DcTDepartments implements java.io.Serializable {
 		this.dcTUserses = dcTUserses;
 	}
 
+	@Override
+	public String toString() {
+		return "DcTDepartments [deptId=" + deptId + ", deptNumber=" + deptNumber + ", deptName=" + deptName
+				+ ", deptSuper=" + deptSuper + ", dcTUserses=" + dcTUserses + "]";
+	}
+
 }

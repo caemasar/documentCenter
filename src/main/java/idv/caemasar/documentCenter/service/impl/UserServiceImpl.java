@@ -1,5 +1,7 @@
 package idv.caemasar.documentCenter.service.impl;
 
+import java.util.List;
+
 import idv.caemasar.documentCenter.dao.UserDAO;
 import idv.caemasar.documentCenter.entity.User;
 import idv.caemasar.documentCenter.service.UserService;
@@ -35,5 +37,15 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int getUserID(User user) {
 		return userDAO.getUserID(user);
+	}
+
+	@Override
+	public int getUserDeptID(int uID) {
+		return userDAO.getUserDeptID(uID);
+	}
+
+	@Override
+	public List<User> getMemberByDeptID(int dept_id) {
+		return userDAO.getMemberByDeptID(dept_id);
 	}
 }

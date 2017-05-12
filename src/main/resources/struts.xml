@@ -62,6 +62,26 @@
 			<result name="error" type="redirect">main_page.action</result>
 			<result name="input" type="redirect">main_page.action</result>
 		</action>
+		<action name="persl_magnt" class="idv.caemasar.documentCenter.action.PerslMagntAction">
+			<result name="success">/WEB-INF/jsp/persl_magnt.jsp</result>
+			<result name="error" type="redirect">main_page.action</result>
+			<result name="input" type="redirect">main_page.action</result>
+		</action>
+		<action name="dept" class="idv.caemasar.documentCenter.action.DeptAction">
+			<result name="success">/WEB-INF/jsp/dept_result.jsp</result>
+			<result name="error" type="redirect">main_page.action</result>
+			<result name="input" type="redirect">main_page.action</result>
+		</action>
+		<action name="sub_dept" class="idv.caemasar.documentCenter.action.SubDeptAction">
+			<result name="success">/WEB-INF/jsp/sub_dept_result.jsp</result>
+			<result name="error" type="redirect">main_page.action</result>
+			<result name="input" type="redirect">main_page.action</result>
+		</action>
+		<action name="member" class="idv.caemasar.documentCenter.action.MemberAction">
+			<result name="success">/WEB-INF/jsp/member_result.jsp</result>
+			<result name="error" type="redirect">main_page.action</result>
+			<result name="input" type="redirect">main_page.action</result>
+		</action>
 		<action name="disk" class="idv.caemasar.documentCenter.action.DiskAction">
 			<result name="success">/WEB-INF/jsp/disk_result.jsp</result>
 		</action>

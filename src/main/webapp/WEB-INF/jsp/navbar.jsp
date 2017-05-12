@@ -29,25 +29,35 @@
 					<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">人员管理<strong
 							class="caret"></strong></a>
 				</c:when>
+				<c:when test="${choosestr == 'persl_magnt'}">
+				<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">人员管理<strong
+							class="caret"></strong></a>
+				</c:when>
 				<c:otherwise>
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">人员管理<strong class="caret"></strong></a>
 				</c:otherwise>
 			</c:choose>
 
 			<ul class="dropdown-menu">
-				<li><a href="#">查看部门构成</a></li>
+				<li><a href="persl_magnt.action">查看部门构成</a></li>
 				<li class="divider"></li>
 				<li><a href="register_page.action">添加新成员</a></li>
 			</ul>
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
+		<c:choose>
+				<c:when test="${choosestr == 'persl_magnt'}">
+				</c:when>
+				<c:otherwise>
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" id="kwy_word"/>
 				</div>
 				<a class="btn btn-default" onclick="jsonLoadSearchFile()">搜索</a>
 			</form>
+				</c:otherwise>
+			</c:choose>
 			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=session.getAttribute("username")%><span
 					class="badge">4</span><strong class="caret"></strong></a>
 				<ul class="dropdown-menu">
