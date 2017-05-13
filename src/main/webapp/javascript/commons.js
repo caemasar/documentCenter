@@ -132,7 +132,7 @@ function packageMember(members) {
 				+ "</p><p>"
 				+ members[iter_member].u_email
 				+ "</p><p>"
-				+ "<a class='btn btn-primary' href='#'>管理权限</a>"
+				+ "<a class='btn btn-primary' href='#' data-toggle='modal' data-target='#myModal'>管理权限</a>"
 				+ "<a class='btn' href='#'>查看</a><a class='btn' href='#'>删除</a>"
 				+ "</p></div></div></div>";
 	}

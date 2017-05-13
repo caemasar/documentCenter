@@ -119,6 +119,81 @@
 				</div>
 			</div>
 		</div>
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">权限修改</h4>
+					</div>
+					<div class="modal-body">
+
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-12">
+									<form class="form-horizontal" role="form" id="perm_from">
+										<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<div class="checkbox">
+
+															<label> <input type="checkbox" /> 查看下属
+															</label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<div class="checkbox">
+
+															<label> <input type="checkbox" /> 添加下属
+															</label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<div class="checkbox">
+
+															<label> <input type="checkbox" /> 信息维护
+															</label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<div class="checkbox">
+
+															<label> <input type="checkbox" /> 删除下属
+															</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="submit" class="btn btn-primary">提交更改</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+		</div>
+		<!-- /.modal -->
 		<script type="text/javascript">
 			jsonLoadDeptInfoAndMember();
 		</script>

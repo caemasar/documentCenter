@@ -23,7 +23,9 @@
 					<li><a href="main_page.action">个人文档</a></li>
 				</c:otherwise>
 			</c:choose>
-			<li><a href="#">部门文档</a></li>
+			<!-- 
+			 <li><a href="#">部门文档</a></li>
+			 -->
 			<c:choose>
 				<c:when test="${choosestr == 'register'}">
 					<li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">人员管理<strong
