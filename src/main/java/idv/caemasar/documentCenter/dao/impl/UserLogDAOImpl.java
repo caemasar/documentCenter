@@ -5,11 +5,11 @@ import java.util.List;
 
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
-import idv.caemasar.documentCenter.dao.UserLogDao;
+import idv.caemasar.documentCenter.dao.UserLogDAO;
 import idv.caemasar.documentCenter.entity.DcTUserLog;
 import idv.caemasar.documentCenter.entity.DcTUsers;
 
-public class UserLogDaoImpl extends HibernateDaoSupport implements UserLogDao {
+public class UserLogDAOImpl extends HibernateDaoSupport implements UserLogDAO {
 
 	@Override
 	public void recordUser(int u_id, String addr) {

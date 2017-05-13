@@ -62,7 +62,8 @@
 			<result name="error" type="redirect">main_page.action</result>
 			<result name="input" type="redirect">main_page.action</result>
 		</action>
-		<action name="persl_magnt" class="idv.caemasar.documentCenter.action.PerslMagntAction">
+		<action name="persl_magnt"
+			class="idv.caemasar.documentCenter.action.PerslMagntAction">
 			<result name="success">/WEB-INF/jsp/persl_magnt.jsp</result>
 			<result name="error" type="redirect">main_page.action</result>
 			<result name="input" type="redirect">main_page.action</result>
@@ -79,6 +80,22 @@
 		</action>
 		<action name="member" class="idv.caemasar.documentCenter.action.MemberAction">
 			<result name="success">/WEB-INF/jsp/member_result.jsp</result>
+			<result name="error" type="redirect">main_page.action</result>
+			<result name="input" type="redirect">main_page.action</result>
+		</action>
+		<action name="mailBox" class="idv.caemasar.documentCenter.action.MailBoxAction">
+			<result name="success">/WEB-INF/jsp/mailbox.jsp</result>
+			<result name="error" type="redirect">main_page.action</result>
+			<result name="input" type="redirect">main_page.action</result>
+		</action>
+		<action name="sentMails"
+			class="idv.caemasar.documentCenter.action.SentMailsAction">
+			<result name="success">/WEB-INF/jsp/mails_result.jsp</result>
+			<result name="error" type="redirect">main_page.action</result>
+			<result name="input" type="redirect">main_page.action</result>
+		</action>
+		<action name="inMails" class="idv.caemasar.documentCenter.action.InMailsAction">
+			<result name="success">/WEB-INF/jsp/mails_result.jsp</result>
 			<result name="error" type="redirect">main_page.action</result>
 			<result name="input" type="redirect">main_page.action</result>
 		</action>

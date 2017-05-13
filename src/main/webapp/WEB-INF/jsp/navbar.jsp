@@ -61,10 +61,11 @@
 				</c:otherwise>
 			</c:choose>
 			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=session.getAttribute("username")%><span
-					class="badge">4</span><strong class="caret"></strong></a>
+					class="badge">4</span><strong class="caret"></strong>
+				</a>
 				<ul class="dropdown-menu">
 					<li><a href="#">个人信息</a></li>
-					<li><a href="#">站内信箱</a></li>
+					<li><a href="mailBox.action">站内信箱</a></li>
 					<li><a href="#">文件推送</a></li>
 					<li class="divider"></li>
 					<li><a href="#" id="btn_relogin" onClick="relogin()">退出</a></li>

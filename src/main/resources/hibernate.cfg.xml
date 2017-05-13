@@ -13,6 +13,7 @@
 		<mapping resource="idv\caemasar\documentCenter\entity\Directory.hbm.xml" />
 		<mapping resource="idv\caemasar\documentCenter\entity\DirInfo.hbm.xml" />
 		<mapping resource="idv\caemasar\documentCenter\entity\File.hbm.xml" />
+		<mapping resource="idv\caemasar\documentCenter\entity\Mail.hbm.xml" />
 		<mapping resource="idv/caemasar/documentCenter/entity/DcTGroups.hbm.xml" />
         <mapping resource="idv/caemasar/documentCenter/entity/DcTDepartments.hbm.xml" />
         <mapping resource="idv/caemasar/documentCenter/entity/DcTFiles.hbm.xml" />

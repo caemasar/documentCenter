@@ -68,4 +68,15 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 		return null;
 	}
 
+	@Override
+	public String getUsernameByID(int uID) {
+		String hql = "select u_username from User where u_id = ?";
+
+		@SuppressWarnings("unchecked")
+		java.util.List<String> u_usernames = (List<String>) this.getHibernateTemplate().find(hql, uID);
+		if (u_usernames.size() > 0)
+			return u_usernames.get(0);
+		return null;
+	}
+
 }

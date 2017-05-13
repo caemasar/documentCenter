@@ -1,12 +1,12 @@
 package idv.caemasar.documentCenter.service.impl;
 
-import idv.caemasar.documentCenter.dao.UserLogDao;
+import idv.caemasar.documentCenter.dao.UserLogDAO;
 import idv.caemasar.documentCenter.service.UserLogService;
 
 public class UserLogServiceImpl implements UserLogService {
-	private UserLogDao userLogDAO;
+	private UserLogDAO userLogDAO;
 
-	public UserLogServiceImpl(UserLogDao userLogDAO) {
+	public UserLogServiceImpl(UserLogDAO userLogDAO) {
 		this.userLogDAO = userLogDAO;
 	}
 

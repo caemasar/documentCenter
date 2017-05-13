@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-11 2:20:15 by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="idv.caemasar.documentCenter.entity.Mail" table="dc_t_mails">
+		<id name="mail_id" column="mail_id" ><generator class="increment" /></id>
+		<property name="mail_from_userid" column="mail_from_userid" />
+		<property name="mail_to_userid" column="mail_to_userid" />
+		<property name="mail_sendtime" column="mail_sendtime" />
+		<property name="mail_letter" column="mail_letter" />
+	</class>
+</hibernate-mapping>

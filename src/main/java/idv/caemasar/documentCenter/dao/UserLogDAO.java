@@ -1,6 +1,6 @@
 package idv.caemasar.documentCenter.dao;
 
-public interface UserLogDao {
+public interface UserLogDAO {
 
 	public void recordUser(int u_id, String addr);
 

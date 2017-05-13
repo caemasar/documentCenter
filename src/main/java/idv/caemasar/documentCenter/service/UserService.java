@@ -10,4 +10,5 @@ public interface UserService
 	public int getUserID(User user);
 	public int getUserDeptID(int uID);
 	public List<User> getMemberByDeptID(int dept_id);
+	public String getUsernameByID(int uID);
 }

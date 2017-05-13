@@ -106,7 +106,8 @@
 				<value>directoryDAO</value>
 				<value>fileDAO</value>
 				<value>departmentDAO</value>
-				<value>userLogDao</value>
+				<value>userLogDAO</value>
+				<value>mailDAO</value>
 			</list>
 		</property>
 		<property name="interceptorNames">
@@ -139,7 +140,13 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean id="userLogDao" class="idv.caemasar.documentCenter.dao.impl.UserLogDaoImpl">
+	<bean id="userLogDAO" class="idv.caemasar.documentCenter.dao.impl.UserLogDAOImpl">
+		<!-- <constructor-arg> <ref bean="hibernateTemplate" /> </constructor-arg> -->
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="mailDAO" class="idv.caemasar.documentCenter.dao.impl.MailDAOImpl">
 		<!-- <constructor-arg> <ref bean="hibernateTemplate" /> </constructor-arg> -->
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
@@ -175,7 +182,13 @@
 	<bean id="userLogService"
 		class="idv.caemasar.documentCenter.service.impl.UserLogServiceImpl">
 		<constructor-arg>
-			<ref bean="userLogDao" />
+			<ref bean="userLogDAO" />
+		</constructor-arg>
+	</bean>
+	<bean id="mailService"
+		class="idv.caemasar.documentCenter.service.impl.MailServiceImpl">
+		<constructor-arg>
+			<ref bean="mailDAO" />
 		</constructor-arg>
 	</bean>
 	<bean id="serviceManager" class="idv.caemasar.documentCenter.service.impl.ServiceManager">
@@ -194,6 +207,10 @@
 		<property name="userLogService">
 			<ref bean="userLogService" />
 		</property>
+		<property name="mailService">
+			<ref bean="mailService" />
+		</property>
+		
 	</bean>
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

@@ -48,4 +48,9 @@ public class UserServiceImpl implements UserService {
 	public List<User> getMemberByDeptID(int dept_id) {
 		return userDAO.getMemberByDeptID(dept_id);
 	}
+
+	@Override
+	public String getUsernameByID(int uID) {
+		return userDAO.getUsernameByID(uID);
+	}
 }
