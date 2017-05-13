@@ -31,7 +31,6 @@ public class InMailsAction extends BaseAction {
 				mail.setMail_to_username(toUsername);
 				
 			}
-			System.out.println(mails);
 			return SUCCESS;
 		}
 		catch (Exception e)

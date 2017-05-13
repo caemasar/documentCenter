@@ -13,7 +13,7 @@ public class MailDAOImpl extends HibernateDaoSupport implements MailDAO {
 	public List<Mail> getInMails(int u_id) {
 		@SuppressWarnings("unchecked")
 		List<Mail> mails = (List<Mail>) this.getHibernateTemplate().findByNamedParam(
-				"from Mail where mail_to_userid = :mail_to_userid order by mail_sendtime",
+				"from Mail where mail_to_userid = :mail_to_userid order by mail_sendtime desc",
 				new String[] { "mail_to_userid" }, new Object[] { u_id });
 		if (mails.size() > 0) {
 			return mails;
@@ -25,7 +25,7 @@ public class MailDAOImpl extends HibernateDaoSupport implements MailDAO {
 	public List<Mail> getSentMails(int u_id) {
 		@SuppressWarnings("unchecked")
 		List<Mail> mails = (List<Mail>) this.getHibernateTemplate().findByNamedParam(
-				"from Mail where mail_from_userid = :mail_from_userid order by mail_sendtime",
+				"from Mail where mail_from_userid = :mail_from_userid order by mail_sendtime desc",
 				new String[] { "mail_from_userid" }, new Object[] { u_id });
 		if (mails.size() > 0) {
 			return mails;

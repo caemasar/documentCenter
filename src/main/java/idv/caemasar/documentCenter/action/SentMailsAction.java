@@ -31,7 +31,6 @@ private List<Mail> mails;
 				mail.setMail_to_username(toUsername);
 				
 			}
-			System.out.println(mails);
 			return SUCCESS;
 		}
 		catch (Exception e)

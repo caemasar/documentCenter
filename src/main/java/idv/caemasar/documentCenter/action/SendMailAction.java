@@ -1,33 +1,31 @@
 package idv.caemasar.documentCenter.action;
 
-import java.util.List;
+import java.util.Date;
+
+import com.opensymphony.xwork2.ModelDriven;
 
 import idv.caemasar.documentCenter.entity.Mail;
 import idv.caemasar.documentCenter.service.MailService;
 
-public class SendMailAction extends BaseAction {
-private List<Mail> mails;
-	
-	public List<Mail> getMails() {
-		return mails;
-	}
+public class SendMailAction extends BaseAction implements ModelDriven<Mail> {
+	private Mail mail = new Mail();
 
-	public void setMails(List<Mail> mails) {
-		this.mails = mails;
-	}
-
-	public String execute() throws Exception
-	{
-		try
-		{
+	public String execute() throws Exception {
+		try {
 			MailService mailService = serviceManager.getMailService();
-			mails = mailService.getInMails(Integer.parseInt(getCookieValue("u_id")));
+			mail.setMail_from_userid(Integer.parseInt(getCookieValue("u_id")));
+			mail.setMail_sendtime(new Date());
+System.out.println(mail);
+			mailService.sendMail(mail);
 			return SUCCESS;
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return ERROR;
+	}
+
+	@Override
+	public Mail getModel() {
+		return mail;
 	}
 }

@@ -51,6 +51,8 @@
 		<c:choose>
 				<c:when test="${choosestr == 'persl_magnt'}">
 				</c:when>
+				<c:when test="${choosestr == 'mailbox'}">
+				</c:when>
 				<c:otherwise>
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
@@ -60,13 +62,24 @@
 			</form>
 				</c:otherwise>
 			</c:choose>
+			<c:choose>
+				<c:when test="${choosestr == 'mailbox'}">
+				<li><a href="#" data-toggle='modal' data-target='#myModal'>写信件</a></li>
+				</c:when>
+				<c:otherwise>
+				</c:otherwise>
+			</c:choose>
 			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=session.getAttribute("username")%><span
 					class="badge">4</span><strong class="caret"></strong>
 				</a>
 				<ul class="dropdown-menu">
+				<!-- 
 					<li><a href="#">个人信息</a></li>
+				 -->
 					<li><a href="mailBox.action">站内信箱</a></li>
+<!-- 
 					<li><a href="#">文件推送</a></li>
+ -->
 					<li class="divider"></li>
 					<li><a href="#" id="btn_relogin" onClick="relogin()">退出</a></li>
 				</ul></li>
