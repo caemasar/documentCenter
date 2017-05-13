@@ -3,6 +3,7 @@ package idv.caemasar.documentCenter.service.impl;
 import idv.caemasar.documentCenter.service.DepartmentService;
 import idv.caemasar.documentCenter.service.DirectoryService;
 import idv.caemasar.documentCenter.service.FileService;
+import idv.caemasar.documentCenter.service.UserLogService;
 import idv.caemasar.documentCenter.service.UserService;
 
 public class ServiceManager {
@@ -10,6 +11,7 @@ public class ServiceManager {
 	private DirectoryService directoryService;
 	private FileService fileService;
 	private DepartmentService departmentService;
+	private UserLogService userLogService;
 
 	public FileService getFileService() {
 		return fileService;
@@ -42,4 +44,13 @@ public class ServiceManager {
 	public void setDepartmentService(DepartmentService departmentService) {
 		this.departmentService = departmentService;
 	}
+
+	public UserLogService getUserLogService() {
+		return userLogService;
+	}
+
+	public void setUserLogService(UserLogService userLogService) {
+		this.userLogService = userLogService;
+	}
+	
 }

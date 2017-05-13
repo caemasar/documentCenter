@@ -106,6 +106,7 @@
 				<value>directoryDAO</value>
 				<value>fileDAO</value>
 				<value>departmentDAO</value>
+				<value>userLogDao</value>
 			</list>
 		</property>
 		<property name="interceptorNames">
@@ -138,6 +139,12 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="userLogDao" class="idv.caemasar.documentCenter.dao.impl.UserLogDaoImpl">
+		<!-- <constructor-arg> <ref bean="hibernateTemplate" /> </constructor-arg> -->
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 	<bean id="userService"
 		class="idv.caemasar.documentCenter.service.impl.UserServiceImpl">
 		<constructor-arg>
@@ -165,6 +172,12 @@
 			<ref bean="departmentDAO" />
 		</constructor-arg>
 	</bean>
+	<bean id="userLogService"
+		class="idv.caemasar.documentCenter.service.impl.UserLogServiceImpl">
+		<constructor-arg>
+			<ref bean="userLogDao" />
+		</constructor-arg>
+	</bean>
 	<bean id="serviceManager" class="idv.caemasar.documentCenter.service.impl.ServiceManager">
 		<property name="userService">
 			<ref bean="userService" />
@@ -177,6 +190,9 @@
 		</property>
 		<property name="departmentService">
 			<ref bean="departmentService" />
+		</property>
+		<property name="userLogService">
+			<ref bean="userLogService" />
 		</property>
 	</bean>
 	<bean

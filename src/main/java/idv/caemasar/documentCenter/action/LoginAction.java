@@ -2,10 +2,13 @@ package idv.caemasar.documentCenter.action;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
 import idv.caemasar.documentCenter.entity.User;
+import idv.caemasar.documentCenter.service.UserLogService;
 import idv.caemasar.documentCenter.service.UserService;
 
 public class LoginAction extends BaseAction implements ModelDriven<User> {
@@ -34,6 +37,7 @@ public class LoginAction extends BaseAction implements ModelDriven<User> {
 	public String execute() throws Exception {
 		try {
 			UserService userService = serviceManager.getUserService();
+			UserLogService logService = serviceManager.getUserLogService();
 			if (userService.verifyUser(user)) {
 				int u_id = userService.getUserID(user);
 				saveCookie("user", user.getU_username(), 24 * 60 * 60);
@@ -42,6 +46,8 @@ public class LoginAction extends BaseAction implements ModelDriven<User> {
 				HttpSession session = request.getSession();
 				session.setAttribute("username", user.getU_username());
 				session.setMaxInactiveInterval(60 * 60 * 3);
+				String addr = ServletActionContext.getRequest().getRemoteAddr();
+				logService.recordUser(u_id, addr);
 				return SUCCESS;
 			} else {
 				this.addFieldError("password", "账户或密码输入错误!");
